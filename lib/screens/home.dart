@@ -4,6 +4,7 @@ import 'solvequestions.dart';
 import 'leaderboard.dart';
 import 'challenge.dart';
 import 'user_account.dart';
+import 'user_account.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -37,6 +38,10 @@ class _HomeState extends State<Home> {
             onPressed: () {
               // Should go to User Account page
               // UserAccount() 
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => UserAccount()),
+  );
             },
           )
         ],

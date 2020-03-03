@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login.dart';
 
 class UserAccount extends StatefulWidget {
   @override
@@ -8,8 +9,28 @@ class UserAccount extends StatefulWidget {
 class _UserAccountState extends State<UserAccount> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Jump to another page, view user account details')
+    return Scaffold(
+
+       appBar: AppBar(
+        title: Text('Player History'),
+        centerTitle: true,
+        backgroundColor: Colors.green[800],
+        ), 
+      
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+
+        // Sign out, to LoginScreen()
+        Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
+        },
+        label: Text('SIGN OUT'),
+        icon: Icon(Icons.exit_to_app),
+        backgroundColor: Colors.grey,
+        
+      ),
     );
+
+   
   }
 }
