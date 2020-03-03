@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "978221434625",
+    "firebase_url": "https://pizzarush-40b2f.firebaseio.com",
+    "project_id": "pizzarush-40b2f",
+    "storage_bucket": "pizzarush-40b2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978221434625:android:a301bdee2f430afc2d3d00",
+        "android_client_info": {
+          "package_name": "com.example.PizzaRush"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978221434625-4kc8eioc62q5nlqlu54r0mlg24bg15g3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMyoGMcZ3lbkxfo6o5_xAuVJmISCq0N54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978221434625-4kc8eioc62q5nlqlu54r0mlg24bg15g3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
