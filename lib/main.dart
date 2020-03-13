@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/material/colors.dart';
 import 'screens/login.dart';
+import 'package:syncfusion_flutter_core/core.dart';
 
-void main() => runApp(MyApp());
+void main(){
+  SyncfusionLicense.registerLicense("NT8mJyc2IWhiZH1nfWN9YGpoYmF8YGJ8ampqanNiYmlmamlmanMDHmg+NjsmP2NjYhM2fT0nJn02NyZ9IDQ=");
+  return runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of the application.
