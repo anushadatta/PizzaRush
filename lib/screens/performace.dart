@@ -1,15 +1,37 @@
 import 'package:flutter/material.dart';
 
-class Challenge extends StatefulWidget {
+class Performance extends StatefulWidget {
   @override
-  _ChallengeState createState() => _ChallengeState();
+  _PerformanceState createState() => _PerformanceState();
 }
 
-class _ChallengeState extends State<Challenge> {
+class _PerformanceState extends State<Performance> {
   //String dropdownValue =;
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Scaffold(
+
+        appBar: AppBar(
+        title: Text('Challenge'),
+    centerTitle: true,
+    backgroundColor: Colors.red[200],
+
+    actions: <Widget>[
+    IconButton(
+    icon: Icon(
+    Icons.account_circle,
+    color: Colors.white,
+    ),
+    onPressed: () {
+    // Should go to User Account page
+    // UserAccount()
+
+    },
+    )
+    ],
+    ),
+
+    body: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -82,10 +104,11 @@ class _ChallengeState extends State<Challenge> {
                         style: TextStyle(fontSize: 20)
                     ),
                   ),
-                ])),
+                ]))
+    ]),
 
 
-      ],
+
     );}}
 
 
