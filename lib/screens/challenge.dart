@@ -20,24 +20,13 @@ class _ChallengeState extends State<Challenge> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-        appBar: AppBar(
-        title: Text('Challenge'),
+    appBar: AppBar(
+    title: Text('CHALLENGE',
+    style: TextStyle(fontSize: 35, color: Colors.black87, fontWeight: FontWeight.bold)),
     centerTitle: true,
-    backgroundColor: Colors.red[200],
+    backgroundColor: Colors.grey[50],
+    elevation: 0.0,
 
-    actions: <Widget>[
-    IconButton(
-    icon: Icon(
-    Icons.account_circle,
-    color: Colors.white,
-    ),
-    onPressed: () {
-    // Should go to User Account page
-    // UserAccount()
-
-    },
-    )
-    ],
     ),
 
     body:Column(
