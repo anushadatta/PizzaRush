@@ -39,18 +39,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
               Padding(
-              padding: const EdgeInsets.fromLTRB(0.0, 70.0, 0.0, 0.0),
+              padding: const EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 0.0),
               child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:[
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.08,
                         width: MediaQuery.of(context).size.width * 0.18, // fixed width and height
-                  
+                        child: Image.asset('assets/PizzaRush.png'),
                       ),
                       Text('PizzaRush',
                             style: TextStyle(
-                                fontSize: 36.0,
+                                fontSize: 45.0,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white
                             ),
@@ -60,9 +60,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
                   Padding(
-                      padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
                       child: Text(
-                        'Education',
+                        'Making learning fun!',
                         style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.w700,
@@ -186,22 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       )),
 
-                  Padding(
-                      padding: const EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-                      child: Container(
-                          width: 300.0,
-                          height: 18.0,
-                          child: FlatButton(
-                            onPressed: (){},
-                            child: Text(
-                              'CREATE ACCOUNT',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ))),
+                  SizedBox(height: 30.0),
 
                   Padding(
                       padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
