@@ -14,7 +14,7 @@ class _PerformanceState extends State<Performance> {
         appBar: AppBar(
         title: Text('Challenge'),
     centerTitle: true,
-    backgroundColor: Colors.red[200],
+    backgroundColor: Colors.green[700],
 
     actions: <Widget>[
     IconButton(

@@ -25,9 +25,20 @@ class _HomeState extends State<Home> {
     return Scaffold(
 
       appBar: AppBar(
-        title: Text('PizzaRush'),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              height: 20.0,
+              width:30.0,
+              child: Image.asset('assets/PizzaRush.png'),
+            ),
+            Text('PizzaRush'),
+          ],
+        ),
         centerTitle: true,
         backgroundColor: Colors.green[800],
+      
 
         actions: <Widget>[
           IconButton(

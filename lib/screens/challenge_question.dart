@@ -28,7 +28,7 @@ class _ChallengeQuestionState extends State<ChallengeQuestion> {
         appBar: AppBar(
           title: Text('Challenge'),
           centerTitle: true,
-          backgroundColor: Colors.red[200],
+          backgroundColor: Colors.green[700],
 
           actions: <Widget>[
             IconButton(
@@ -236,7 +236,7 @@ class _ChallengeQuestionState extends State<ChallengeQuestion> {
                     },
 
                     child: Text(
-                        "Challenge",style: TextStyle(fontSize: 40,color: Colors.red[200])),
+                        "CHALLENGE",style: TextStyle(fontSize: 35,color: Colors.green[700])),
                   )),
                   SizedBox(width: 25,),
                 ]),
