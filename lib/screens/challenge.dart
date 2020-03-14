@@ -1,3 +1,4 @@
+import 'package:PizzaRush/screens/challenge_question.dart';
 import 'package:PizzaRush/screens/received_challenges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +18,29 @@ class _ChallengeState extends State<Challenge> {
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
 
-    return Column(
+        appBar: AppBar(
+        title: Text('Challenge'),
+    centerTitle: true,
+    backgroundColor: Colors.red[200],
+
+    actions: <Widget>[
+    IconButton(
+    icon: Icon(
+    Icons.account_circle,
+    color: Colors.white,
+    ),
+    onPressed: () {
+    // Should go to User Account page
+    // UserAccount()
+
+    },
+    )
+    ],
+    ),
+
+    body:Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -160,17 +182,17 @@ class _ChallengeState extends State<Challenge> {
                 RaisedButton(
                   color: Colors.grey[200],
                   onPressed: (){
-                    Navigator.push(context, CupertinoPageRoute(builder: (context) => ChallengeFriend()));
+                    Navigator.push(context, CupertinoPageRoute(builder: (context) => ChallengeQuestion()));
                   },
 
                   child: Text(
                       "Challenge",style: TextStyle(fontSize: 40)),
                 )),
                 SizedBox(width: 25,),
-              ]),
+              ])]),
 
 
-        ]);}}
+        );}}
 
 
 
