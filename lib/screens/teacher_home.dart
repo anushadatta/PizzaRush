@@ -44,6 +44,7 @@ class _TeacherHomeState extends State<TeacherHome> {
             onPressed: () {
               
               // LOGOUT 
+              Navigator.pop(context);
               
             },
           )

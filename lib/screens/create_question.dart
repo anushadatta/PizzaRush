@@ -25,14 +25,13 @@ class _CreateQuestionState extends State<CreateQuestion> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-        //remove scaffold later 
-        appBar: AppBar(backgroundColor: Colors.green[700],),
-
         body: ListView(
           shrinkWrap: true,
 
           children: <Widget>[ 
-            
+          
+          SizedBox(height: 20,),
+          
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
