@@ -8,8 +8,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:PizzaRush/services/login.dart';
+import 'package:PizzaRush/services/collections.dart';
 import 'home.dart';
 import 'forgotpw.dart';
+import 'teacher_home.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -168,7 +170,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             var sessToken = await LoginModel().handleSignIn(username, password);
 
                             if(sessToken!=null){
-                              Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => Home()));}
+                              if(await Collections().isStudent(username) == true)
+                              {Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => Home()));}
+                            else{
+                                Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => TeacherHome()));
+                            }
+                            }
                             else{
                               showIncorrectInfoFlushbar(context);
                             }
