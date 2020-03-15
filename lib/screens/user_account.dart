@@ -102,9 +102,9 @@ class _UserAccountState extends State<UserAccount> {
           Container(
             padding: EdgeInsets.fromLTRB(35.0, 0.0, 50.0, 0.0),
             child: SfCartesianChart(
-              primaryXAxis: NumericAxis(
+              primaryXAxis: CategoryAxis(
                 title: AxisTitle(
-                  text: 'TIME'
+                  text: 'DATE'
                 )
               ),
               primaryYAxis: NumericAxis(
@@ -114,17 +114,17 @@ class _UserAccountState extends State<UserAccount> {
               ),
               legend: Legend(isVisible: false),
               tooltipBehavior: TooltipBehavior(enable: true), // Enables the tooltip.
-              series: <LineSeries<SalesData, double>>[
-                LineSeries<SalesData, double>(
-                  dataSource: [
-                    SalesData(5.00, 35),
-                    SalesData(10.00, 28),
-                    SalesData(15.00, 34),
-                    SalesData(20.00, 32),
-                    SalesData(25.00, 40)
-                  ],
-                  xValueMapper: (SalesData sales, _) => sales.time,
-                  yValueMapper: (SalesData sales, _) => sales.points,
+              series: <LineSeries<PointsData, String>>[
+                LineSeries<PointsData, String>(
+                    dataSource: [
+                      PointsData('03-02', 35),
+                      PointsData('10-02', 28),
+                      PointsData('17-02', 34),
+                      PointsData('24-02', 32),
+                      PointsData('02-03', 40)
+                    ],
+                  xValueMapper: (PointsData history, _) => history.date,
+                  yValueMapper: (PointsData history, _) => history.points,
                   dataLabelSettings: DataLabelSettings(isVisible: true) // Enables the data label.
                 ),
               ],
@@ -206,9 +206,9 @@ class _UserAccountState extends State<UserAccount> {
           Container(
             padding: EdgeInsets.fromLTRB(35.0, 0.0, 50.0, 0.0),
             child: SfCartesianChart(
-              primaryXAxis: NumericAxis(
+              primaryXAxis: CategoryAxis(
                   title: AxisTitle(
-                      text: 'TIME'
+                      text: 'DATE'
                   )
               ),
               primaryYAxis: NumericAxis(
@@ -218,17 +218,17 @@ class _UserAccountState extends State<UserAccount> {
               ),
               legend: Legend(isVisible: false),
               tooltipBehavior: TooltipBehavior(enable: true), // Enables the tooltip.
-              series: <LineSeries<SalesData, double>>[
-                LineSeries<SalesData, double>(
+              series: <LineSeries<PointsData, String>>[
+                LineSeries<PointsData, String>(
                     dataSource: [
-                      SalesData(5.00, 35),
-                      SalesData(10.00, 28),
-                      SalesData(15.00, 34),
-                      SalesData(20.00, 32),
-                      SalesData(25.00, 40)
+                      PointsData('03-02', 35),
+                      PointsData('10-02', 28),
+                      PointsData('17-02', 34),
+                      PointsData('24-02', 32),
+                      PointsData('02-03', 40)
                     ],
-                    xValueMapper: (SalesData sales, _) => sales.time,
-                    yValueMapper: (SalesData sales, _) => sales.points,
+                    xValueMapper: (PointsData history, _) => history.date,
+                    yValueMapper: (PointsData history, _) => history.points,
                     dataLabelSettings: DataLabelSettings(isVisible: true) // Enables the data label.
                 ),
               ],
@@ -310,9 +310,9 @@ class _UserAccountState extends State<UserAccount> {
           Container(
             padding: EdgeInsets.fromLTRB(35.0, 0.0, 50.0, 0.0),
             child: SfCartesianChart(
-              primaryXAxis: NumericAxis(
+              primaryXAxis: CategoryAxis(
                   title: AxisTitle(
-                      text: 'TIME'
+                      text: 'DATE'
                   )
               ),
               primaryYAxis: NumericAxis(
@@ -322,17 +322,17 @@ class _UserAccountState extends State<UserAccount> {
               ),
               legend: Legend(isVisible: false),
               tooltipBehavior: TooltipBehavior(enable: true), // Enables the tooltip.
-              series: <LineSeries<SalesData, double>>[
-                LineSeries<SalesData, double>(
+              series: <LineSeries<PointsData, String>>[
+                LineSeries<PointsData, String>(
                     dataSource: [
-                      SalesData(5.00, 35),
-                      SalesData(10.00, 28),
-                      SalesData(15.00, 34),
-                      SalesData(20.00, 32),
-                      SalesData(25.00, 40)
+                      PointsData('03-02', 35),
+                      PointsData('10-02', 28),
+                      PointsData('17-02', 34),
+                      PointsData('24-02', 32),
+                      PointsData('02-03', 40)
                     ],
-                    xValueMapper: (SalesData sales, _) => sales.time,
-                    yValueMapper: (SalesData sales, _) => sales.points,
+                    xValueMapper: (PointsData history, _) => history.date,
+                    yValueMapper: (PointsData history, _) => history.points,
                     dataLabelSettings: DataLabelSettings(isVisible: true) // Enables the data label.
                 ),
               ],
@@ -340,7 +340,8 @@ class _UserAccountState extends State<UserAccount> {
           ),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 120.0, vertical: 0.0),
-            child: RaisedButton(
+            child: OutlineButton(
+              borderSide: BorderSide(color: Colors.green[800]),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => GradingRubric()));
               },
@@ -575,8 +576,9 @@ class _UserAccountState extends State<UserAccount> {
 
 }
 
-class SalesData {
-  SalesData(this.time, this.points);
-  final double time;
+class PointsData {
+  PointsData(this.date, this.points);
+  final String date;
   final int points;
 }
+
