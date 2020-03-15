@@ -30,10 +30,10 @@ class _CreateQuestionState extends State<CreateQuestion> {
 
           children: <Widget>[ 
           
-          SizedBox(height: 20,),
+          SizedBox(height: 30.0,),
 
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 5.0),
             child: Text(
             'SELECT MATH TOPIC',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -72,7 +72,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
           ),
 
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(12.0, 18.0,12.0,5.0),
             child: Text(
             'SELECT DIFFICULTY LEVEL',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -111,7 +111,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
           ),
 
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(12.0, 18.0,12.0,5.0),
             child: Text(
             'SELECT GAME WORLD CHARACTER',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -149,8 +149,10 @@ class _CreateQuestionState extends State<CreateQuestion> {
             ),
           ),
 
+          SizedBox(height:20),
+
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(12.0 ,12.0 ,12.0,0),
             child: Text(
             'CONTEXT STORY',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -158,20 +160,24 @@ class _CreateQuestionState extends State<CreateQuestion> {
             ),
           ),
 
-          Container(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              maxLines: 5,
-              controller: storyContext, 
-              decoration: InputDecoration(
-                labelText: 'Write story context here.',
-                border: OutlineInputBorder(),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: TextField(
+                maxLines: 5,
+                controller: storyContext, 
+                decoration: InputDecoration(
+                  labelText: 'Write story context here.',
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
           ),
 
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(12.0 ,12.0 ,12.0,0),
             child: Text(
             'MATHEMATICS QUESTION',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -179,21 +185,24 @@ class _CreateQuestionState extends State<CreateQuestion> {
             ),
           ),
 
-          Container(
-            margin: EdgeInsets.all(10),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+            child: Container(
+              margin: EdgeInsets.all(20),
 
-            child: TextField(
-              maxLines: 5,
-              controller: mathQuestion,
-              decoration: InputDecoration(
-                labelText: 'Type question here.',
-                border: OutlineInputBorder(),
+              child: TextField(
+                maxLines: 5,
+                controller: mathQuestion,
+                decoration: InputDecoration(
+                  labelText: 'Type question here.',
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
           ),
 
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(12.0 ,12.0 ,12.0,0),
             child: Text(
             'HINT',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -201,20 +210,24 @@ class _CreateQuestionState extends State<CreateQuestion> {
             ),
           ),
 
-          Container(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              maxLines: 5,
-              controller: hints, 
-              decoration: InputDecoration(
-                labelText: 'Write question hint here.',
-                border: OutlineInputBorder(),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: TextField(
+                maxLines: 5,
+                controller: hints, 
+                decoration: InputDecoration(
+                  labelText: 'Write question hint here.',
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
           ),
 
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(12.0 ,12.0 ,12.0,0),
             child: Text(
             'A.',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -222,19 +235,23 @@ class _CreateQuestionState extends State<CreateQuestion> {
             ),
           ),
 
-          Container(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              controller: a1, 
-              decoration: InputDecoration(
-                labelText: 'Enter candidate answer 1.',
-                border: OutlineInputBorder(),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: TextField(
+                controller: a1, 
+                decoration: InputDecoration(
+                  labelText: 'Enter candidate answer 1.',
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
           ),
 
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(12.0 ,12.0 ,12.0,0),
             child: Text(
             'B.',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -242,19 +259,23 @@ class _CreateQuestionState extends State<CreateQuestion> {
             ),
           ),
 
-          Container(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              controller: a2, 
-              decoration: InputDecoration(
-                labelText: 'Enter candidate answer 2.',
-                border: OutlineInputBorder(),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: TextField(
+                controller: a2, 
+                decoration: InputDecoration(
+                  labelText: 'Enter candidate answer 2.',
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
           ),
 
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(12.0 ,12.0 ,12.0,0),
             child: Text(
             'C.',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -262,19 +283,23 @@ class _CreateQuestionState extends State<CreateQuestion> {
             ),
           ),
 
-          Container(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              controller: a3, 
-              decoration: InputDecoration(
-                labelText: 'Enter candidate answer 3.',
-                border: OutlineInputBorder(),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: TextField(
+                controller: a3, 
+                decoration: InputDecoration(
+                  labelText: 'Enter candidate answer 3.',
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
           ),
 
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(12.0 ,12.0 ,12.0,0),
             child: Text(
             'D.',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -282,19 +307,23 @@ class _CreateQuestionState extends State<CreateQuestion> {
             ),
           ),
 
-          Container(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              controller: a4, 
-              decoration: InputDecoration(
-                labelText: 'Enter candidate answer 4.',
-                border: OutlineInputBorder(),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: TextField(
+                controller: a3, 
+                decoration: InputDecoration(
+                  labelText: 'Enter candidate answer 4.',
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
           ),
 
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.fromLTRB(12.0 ,12.0 ,12.0,0),
             child: Text(
             'CORRECT ANSWER',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -302,52 +331,57 @@ class _CreateQuestionState extends State<CreateQuestion> {
             ),
           ),
 
-          Container(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              controller: a4, 
-              decoration: InputDecoration(
-                labelText: 'Enter correct candidate answer',
-                border: OutlineInputBorder(),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: TextField(
+                controller: a3, 
+                decoration: InputDecoration(
+                  labelText: 'Enter correct candidate answer.',
+                  border: OutlineInputBorder(),
+                ),
               ),
             ),
           ),
 
-          SizedBox(height: 30),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(70.0,20.0,70.0,20.0),
+            child: Container(
 
-          Container(
+              height:50,
+              width: 100,
 
-            height:50,
-            width: 100,
+              child: RaisedButton(
+              onPressed: () {
 
-            child: RaisedButton(
-            onPressed: () {
+                // Instantiate Question object for upload to firebase.
+                Question q = Question(
 
-              // Instantiate Question object for upload to firebase.
-              Question q = Question(
+                  id: '', // NEED TO UPDATE QUESTION ID 
+                  topic: dropdownValue_topic,
+                  level: dropdownValue_level,
+                  character: dropdownValue_character,
+                  storyContext: storyContext.text,
+                  question: mathQuestion.text,
+                  imageUrl:'',
+                  answer1: a1.text,
+                  answer2: a2.text,
+                  answer3: a3.text,
+                  answer4: a4.text,
+                  correctanswer:correctAnswer.text,
+                  hint: hints.text, 
+                  points: calculatePoints(dropdownValue_level) 
+                  );
 
-                id: '', // NEED TO UPDATE QUESTION ID 
-                topic: dropdownValue_topic,
-                level: dropdownValue_level,
-                character: dropdownValue_character,
-                storyContext: storyContext.text,
-                question: mathQuestion.text,
-                imageUrl:'',
-                answer1: a1.text,
-                answer2: a2.text,
-                answer3: a3.text,
-                answer4: a4.text,
-                correctanswer:correctAnswer.text,
-                hint: hints.text, 
-                points: calculatePoints(dropdownValue_level) 
-                );
+                // Pass object q to a services function that uploads it to firebase.
 
-              // Pass object q to a services function that uploads it to firebase.
-
-            },
-            child: const Text(
-              'UPLOAD',
-              style: TextStyle(fontSize: 20)
+              },
+              child: const Text(
+                'UPLOAD',
+                style: TextStyle(fontSize: 20)
+                ),
               ),
             ),
           ),
