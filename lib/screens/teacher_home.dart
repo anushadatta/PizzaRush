@@ -26,7 +26,7 @@ class _TeacherHomeState extends State<TeacherHome> {
             SizedBox(
               height: 20.0,
               width:30.0,
-              //child: Image.asset('assets/PizzaRush.png'),
+              child: Image.asset('assets/PizzaRush.png'),
             ),
             Text('PizzaRush'),
           ],
