@@ -31,7 +31,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
           children: <Widget>[ 
           
           SizedBox(height: 20,),
-          
+
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
@@ -339,7 +339,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
                 answer4: a4.text,
                 correctanswer:correctAnswer.text,
                 hint: hints.text, 
-                points: 0, // NEED TO CODE A FUNCTION TO CALCULATE POINTS 
+                points: calculatePoints(dropdownValue_level) 
                 );
 
               // Pass object q to a services function that uploads it to firebase.
@@ -357,3 +357,18 @@ class _CreateQuestionState extends State<CreateQuestion> {
     ); 
   }
 }
+
+double calculatePoints(String level)
+{
+  if(level=='Easy')
+    return 10;
+  
+  else if(level=='Medium')
+    return 20;
+  
+  else if(level=='Hard')
+    return 30;
+  
+  else
+    return 0; 
+} 
