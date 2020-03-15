@@ -4,6 +4,8 @@ class Question
   String question;
   String topic;
   String level;
+  String storyContext;
+  String character; 
   String answer1;
   String answer2;
   String answer3;
@@ -18,6 +20,8 @@ class Question
     this.question,
     this.level,
     this.topic,
+    this.storyContext,
+    this.character,
     this.answer1,
     this.answer2,
     this.answer3,
