@@ -1,4 +1,6 @@
+import 'package:PizzaRush/screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'create_question.dart';
 import 'teacher_class_performance.dart';
 import 'leaderboard.dart';
@@ -44,7 +46,7 @@ class _TeacherHomeState extends State<TeacherHome> {
             onPressed: () {
               
               // LOGOUT 
-              Navigator.pop(context);
+              Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => LoginScreen()));
               
             },
           )

@@ -392,7 +392,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
   }
 }
 
-double calculatePoints(String level)
+int calculatePoints(String level)
 {
   if(level=='Easy')
     return 10;

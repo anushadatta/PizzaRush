@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'user_account.dart';
+import 'package:PizzaRush/models/question.dart';
+import 'package:PizzaRush/services/collections.dart';
+import 'package:flushbar/flushbar.dart';
 
 class QuestionScreen extends StatefulWidget {
   var topicchosen;
-  var difficulty;
+  var level;
 
-  QuestionScreen({@required this.topicchosen, @required this.difficulty});
+  QuestionScreen({@required this.topicchosen, @required this.level});
   @override
   _QuestionScreenState createState() => _QuestionScreenState();
 }
 
+enum SingingCharacter { alpha, beta, gamma, delta, epsilon, zeta, eta, theta}
+
 class _QuestionScreenState extends State<QuestionScreen> {
+  Future<List> questionList;
+  int numQuestions = 0;
+  List<SingingCharacter> _character = [SingingCharacter.alpha, SingingCharacter.epsilon];
+  List<List<SingingCharacter>> _options = [[SingingCharacter.alpha, SingingCharacter.beta, SingingCharacter.gamma, SingingCharacter.delta], [SingingCharacter.epsilon, SingingCharacter.zeta, SingingCharacter.eta, SingingCharacter.theta]];
 
   @override
   Widget build(BuildContext context) {
@@ -69,84 +79,236 @@ class _QuestionScreenState extends State<QuestionScreen> {
           ),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                  padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-                  child: Text(
-                    'SELECT LEVEL OF DIFFICULTY',
-                    style: TextStyle(
-                      fontSize: 28.0,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.black,
-                    ),
-                    textAlign: TextAlign.center,
-                  )
-              ),
-              Padding(
-                  padding: const EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-                  child: Container(
-                    width: 300.0,
-                    height: 50.0,
-                    child: RaisedButton(
-                      onPressed: () async {
-                      },
-                      child: Text(
-                        'EASY',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      color: Colors.white70,
-                    ),
-                  )),
-              Padding(
-                  padding: const EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-                  child: Container(
-                    width: 300.0,
-                    height: 50.0,
-                    child: RaisedButton(
-                      onPressed: () async {
-                      },
-                      child: Text(
-                        'MEDIUM',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      color: Colors.white70,
-                    ),
-                  )),
-              Padding(
-                  padding: const EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-                  child: Container(
-                    width: 300.0,
-                    height: 50.0,
-                    child: RaisedButton(
-                      onPressed: () async {
-                      },
-                      child: Text(
-                        'HARD',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      color: Colors.white70,
-                    ),
-                  )),
-            ],
-          ),
+          child: buildQuestionList(questionList),
         )
     );
   }
+
+  Widget buildQuestionList(apiData) => FutureBuilder<dynamic>(
+      future: apiData,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) return Container(
+            height: 300,
+            width: 400,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Center(
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    margin: EdgeInsets.all(5),
+                    child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.green)),
+                  ),
+                ),
+              ],
+            )
+        );
+        if (snapshot.data.length == 0) {
+          return Container(
+              height: 300,
+              width: 400,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Center(
+                    child: Container(
+                      height: 200,
+                      width: 200,
+                      margin: EdgeInsets.all(5),
+                      child: Text("No Questions Here!", style: TextStyle(
+                          fontSize: 20,
+                        fontWeight: FontWeight.w700
+                      ),
+                      textAlign: TextAlign.center,),
+                    ),
+                  ),
+                ],
+              )
+          );
+        }
+
+        return new SingleChildScrollView(
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                          0.0, 15.0, 0.0, 0.0),
+                      child:
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Text('SECTION',
+                          style: TextStyle(
+                            fontSize: 25
+                          )),
+                          new Container(
+                            margin: const EdgeInsets.all(5.0),
+                            padding: const EdgeInsets.fromLTRB(10, 3, 10, 3),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.blueAccent)
+                            ),
+                            child: Text("${widget.topicchosen.toString().toUpperCase()}",
+                            style: TextStyle(
+                              fontSize: 20
+                            ),),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        width: 50
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Text('POINTS',
+                              style: TextStyle(
+                                  fontSize: 25
+                              )),
+                          new Container(
+                            margin: const EdgeInsets.all(5.0),
+                            padding: const EdgeInsets.fromLTRB(40, 3, 40, 3),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.blueAccent)
+                            ),
+                            child: Text("${snapshot.data[0].points}",
+                              style: TextStyle(
+                                  fontSize: 20
+                              ),),
+                          )
+                        ],
+                      ),
+
+                    ],
+                  )),
+                  for(int i = 0; i < snapshot.data.length; i++)
+                    Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                            0.0, 15.0, 0.0, 0.0),
+                        child:
+                        Container(
+                            height: MediaQuery.of(context).size.height * 1.35,
+                            width: MediaQuery.of(context).size.width * 1,
+                            child: Card(
+                                elevation: 10,
+                                child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .center,
+                                    children: [
+                                      Container(
+                                        width: MediaQuery.of(context).size.width * 1,
+                                        height: MediaQuery.of(context).size.height * 0.8,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            fit: BoxFit.fill,
+                                            image: NetworkImage(snapshot.data[i].imageUrl),
+                                          ),
+                                        ),
+                                      ),
+                                      Text('Q: ${snapshot.data[i].question}',
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.w700
+                                      ),
+                                      textAlign: TextAlign.center,),
+
+                                      ListTile(
+                                        title: Text('A. ${snapshot.data[i].answer1}',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w600
+                                        )),
+                                        leading: Radio(
+                                          value: _options[i][0],
+                                          groupValue: _character[i],
+                                          onChanged: (SingingCharacter value) {
+                                            setState(() { _character[i] = value; });
+                                          },
+                                        ),
+                                      ),
+                                      ListTile(
+                                        title: Text('B. ${snapshot.data[i].answer2}',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600
+                                            )),
+                                        leading: Radio(
+                                          value:_options[i][1],
+                                          groupValue: _character[i],
+                                          onChanged: (SingingCharacter value) {
+                                            setState(() { _character[i] = value; });
+                                          },
+                                        ),
+                                      ),
+
+                                      ListTile(
+                                        title: Text('C. ${snapshot.data[i].answer3}',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600
+                                            )),
+                                        leading: Radio(
+                                          value: _options[i][2],
+                                          groupValue: _character[i],
+                                          onChanged: (SingingCharacter value) {
+                                            setState(() { _character[i] = value; });
+                                          },
+                                        ),
+                                      ),
+
+                                      ListTile(
+                                        title: Text('D. ${snapshot.data[i].answer4}',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600
+                                            )),
+                                        leading: Radio(
+                                          value:_options[i][3],
+                                          groupValue: _character[i],
+                                          onChanged: (SingingCharacter value) {
+                                            setState(() { _character[i] = value; });
+                                          },
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 50,
+                                        width: 100,
+                                        child: RaisedButton(
+                                          child: Text('HINT'),
+                                          onPressed: (){
+                                            Flushbar(
+                                              title: 'HINT',
+                                              message: '${snapshot.data[i].hint}',
+                                              icon: Icon(
+                                                Icons.info_outline,
+                                                size: 28,
+                                                color: Colors.green[900],
+                                              ),
+                                              leftBarIndicatorColor: Colors.green[900],
+                                              duration: Duration(seconds: 3),
+                                            )..show(context);
+                                          },
+                                        )
+                                      )
+                                    ]
+                                ))))
+                ])
+
+
+        );
+      });
+
+  void initState() {
+    super.initState();
+    setState(()  {
+      questionList = Collections().getQuestions(widget.level, widget.topicchosen);
+    });
+  }
+
 }

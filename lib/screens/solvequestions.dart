@@ -59,7 +59,7 @@ class _SolveQuestionsState extends State<SolveQuestions> {
                 child: RaisedButton(
                   onPressed: () async {
                     setState(() {
-                      Navigator.push(context, CupertinoPageRoute(builder: (context) => SelectQuestionLevel(topicchosen: 'algebra')));
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) => SelectQuestionLevel(topicchosen: 'trigonometry')));
                     });
                   },
                   child: Text(
@@ -82,7 +82,7 @@ class _SolveQuestionsState extends State<SolveQuestions> {
                 child: RaisedButton(
                   onPressed: () async {
                     setState(() {
-                      Navigator.push(context, CupertinoPageRoute(builder: (context) => SelectQuestionLevel(topicchosen: 'algebra')));
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) => SelectQuestionLevel(topicchosen: 'geometry')));
 
                     });
                   },

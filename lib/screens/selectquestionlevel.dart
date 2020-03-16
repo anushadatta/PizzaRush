@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'user_account.dart';
+import 'questionscreen.dart';
 
 class SelectQuestionLevel extends StatefulWidget {
   var topicchosen;
@@ -90,6 +92,9 @@ class _SelectQuestionLevelState extends State<SelectQuestionLevel> {
                   height: 50.0,
                   child: RaisedButton(
                     onPressed: () async {
+                      setState(() {
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) => QuestionScreen(topicchosen: widget.topicchosen, level: 'easy')));
+                      });
                     },
                     child: Text(
                       'EASY',
@@ -110,6 +115,12 @@ class _SelectQuestionLevelState extends State<SelectQuestionLevel> {
                   height: 50.0,
                   child: RaisedButton(
                     onPressed: () async {
+                      setState(() {
+                        Navigator.push(context, CupertinoPageRoute(
+                            builder: (context) =>
+                                QuestionScreen(topicchosen: widget.topicchosen,
+                                    level: 'medium')));
+                      });
                     },
                     child: Text(
                       'MEDIUM',
@@ -130,6 +141,12 @@ class _SelectQuestionLevelState extends State<SelectQuestionLevel> {
                   height: 50.0,
                   child: RaisedButton(
                     onPressed: () async {
+                      setState(() {
+                        Navigator.push(context, CupertinoPageRoute(
+                            builder: (context) =>
+                                QuestionScreen(topicchosen: widget.topicchosen,
+                                    level: 'hard')));
+                      });
                     },
                     child: Text(
                       'HARD',

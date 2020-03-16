@@ -13,7 +13,7 @@ class Question
   String correctanswer;
   String imageUrl;
   String hint;
-  double points;
+  int points;
 
   Question({
     this.id,
@@ -31,5 +31,27 @@ class Question
     this.hint,
     this.points
   });
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> q = new Map<String, dynamic>();
+    q['id'] = this.id;
+    q['question'] = this.question;
+    q['level'] = this.level;
+    q['topic'] = this.topic;
+    q['storyContext'] = this.storyContext;
+    q['character'] = this.character;
+    q['answer1'] = this.answer1;
+    q['answer2'] = this.answer2;
+    q['answer3'] = this.answer3;
+    q['answer4'] = this.answer4;
+    q['correctanswer'] = this.correctanswer;
+    q['imageUrl'] = this.imageUrl;
+    q['hint'] = this.hint;
+    q['points'] = this.points;
+    return q;
+  }
+  String getQuestion(){
+    return this.question;
+  }
 
 }
