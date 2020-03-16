@@ -14,6 +14,7 @@ class _LeaderboardState extends State<Leaderboard> {
       length: 3,
       child: Scaffold(
           appBar: AppBar(
+            leading: new Container(),
             title: Text('LEADERBOARD'),
             centerTitle: true,
             backgroundColor: Colors.green[800],

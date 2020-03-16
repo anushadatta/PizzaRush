@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
         ),
         centerTitle: true,
         backgroundColor: Colors.green[800],
-      
+        leading: new Container(),
 
         actions: <Widget>[
           IconButton(

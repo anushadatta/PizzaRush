@@ -33,6 +33,7 @@ class _TeacherHomeState extends State<TeacherHome> {
             Text('PizzaRush'),
           ],
         ),
+        leading: new Container(),
         centerTitle: true,
         backgroundColor: Colors.green[800],
       

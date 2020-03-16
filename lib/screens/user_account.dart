@@ -558,7 +558,7 @@ class _UserAccountState extends State<UserAccount> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
         // Sign out, to LoginScreen()
-        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
         },
         label: Text('SIGN OUT'),
         icon: Icon(Icons.exit_to_app),
