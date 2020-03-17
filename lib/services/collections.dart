@@ -1,5 +1,7 @@
-import 'package:PizzaRush/models/question.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:PizzaRush/models/leaderboardClass.dart';
+import 'package:PizzaRush/models/question.dart';
 import 'package:PizzaRush/screens/login.dart';
 
 class Collections
@@ -79,4 +81,48 @@ class Collections
 
     return points;
   }
+
+  Future getLeaderboardData(String topic) async {
+    
+    // List<Leaderboard> leaderboardData;  
+
+    // if(isStudent(username)) 
+    // { var usertopicRef = await databaseReference.document('users/$username/points/$topic');
+
+    //   await usertopicRef
+    //       .get()
+    //       .then((DocumentSnapshot snapshot) {
+
+    //         Leaderboard l(name: username, points: snapshot.data['points']); 
+    //         leaderboardData.add( l );
+
+    //   });
+    // }
+
+    // return leaderboardData;
+
+    List<Leaderboard> leaderboardData = [];
+
+    if(await isStudent(username)) 
+    {
+      databaseReference
+          .collection("users")
+          .getDocuments()
+          .then((QuerySnapshot snapshot) {
+
+          snapshot.documents.forEach((user) => 
+
+              leaderboardData.add(
+              Leaderboard(
+                name: user['firstname'],
+                points: user['points'].$topic['points'], 
+              )     
+            )); 
+        }); 
+      }
+
+      return leaderboardData; 
+  }
+
+
 }

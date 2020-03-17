@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:PizzaRush/models/leaderboardClass.dart'; 
+import 'package:PizzaRush/services/collections.dart';
 
 class Algebra extends StatefulWidget {
   @override
@@ -8,6 +9,9 @@ class Algebra extends StatefulWidget {
 
 class _AlgebraState extends State<Algebra> {
 
+  // Testing Firebase for Leaderboard 
+  //List<Leaderboard> l = getLeaderboardData('Algebra'); 
+  
   List<Leaderboard> l = [
     Leaderboard(name:'Kourtney', points:5700),
     Leaderboard(name:'Robert', points:3200),
