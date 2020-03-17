@@ -339,7 +339,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
             child: Container(
               padding: EdgeInsets.all(20),
               child: TextField(
-                controller: a3, 
+                controller: correctAnswer, 
                 decoration: InputDecoration(
                   labelText: 'Enter correct candidate answer.',
                   border: OutlineInputBorder(),
