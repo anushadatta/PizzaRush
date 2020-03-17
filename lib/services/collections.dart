@@ -83,24 +83,6 @@ class Collections
   }
 
   Future<List> getLeaderboardData(String topic) async {
-    
-    // List<Leaderboard> leaderboardData;  
-
-    // if(isStudent(username)) 
-    // { var usertopicRef = await databaseReference.document('users/$username/points/$topic');
-
-    //   await usertopicRef
-    //       .get()
-    //       .then((DocumentSnapshot snapshot) {
-
-    //         Leaderboard l(name: username, points: snapshot.data['points']); 
-    //         leaderboardData.add( l );
-
-    //   });
-    // }
-
-    // return leaderboardData;
-
     List<Leaderboard> leaderboardData = [];
 
       await databaseReference
@@ -125,6 +107,5 @@ class Collections
       }  
       return leaderboardData; 
   }
-
 
 }

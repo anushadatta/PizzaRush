@@ -1,7 +1,7 @@
 class Leaderboard 
 {
   String name; 
-  double points; 
+  int points; 
   bool uid;
 
   Leaderboard({
