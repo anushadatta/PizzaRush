@@ -1,3 +1,4 @@
+import 'package:PizzaRush/models/challenges.dart';
 import 'package:PizzaRush/models/question.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:PizzaRush/screens/login.dart';
@@ -67,6 +68,29 @@ class Collections
     }
   }
 
+  Future<int> getPreviousAttempts(String topic, String level) async{
+    var usertopicRef = await databaseReference.document('users/$username/points/$topic');
+    int attempts;
+    await usertopicRef
+        .get()
+        .then((DocumentSnapshot snapshot) {
+      attempts = snapshot.data['question_$level'];
+
+    });
+    return attempts;
+  }
+
+  void updateQuestionDone(String topic, String level) async{
+    var usertopicRef = await databaseReference.document('users/$username/points/$topic');
+    var previousAttempts = await getPreviousAttempts(topic, level);
+    try {
+      await usertopicRef
+          .updateData({'question_$level': (previousAttempts+1)});
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   Future<int> getScore(String topic) async {
     var usertopicRef = await databaseReference.document('users/$username/history/$topic');
     int points;
@@ -78,5 +102,32 @@ class Collections
       });
 
     return points;
+  }
+
+  Future<List<Challenges>> getChallenges() async{
+
+    List<Challenges> challenges = [];
+    var challengesRef = await databaseReference.collection('users/$username/received_challenges');
+
+    await challengesRef
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((q) =>
+          challenges.add(
+              Challenges(
+                  id: q['id'],
+                  challenger: q['challenger'],
+                  level: q['level'],
+                  topic: q['topic'],
+                  challengers_time: q['challengers_time'],
+                  challengers_score: q['challengers_score'],
+                  challengee_time: q['challengee_time'],
+                  challengee_score: q['challengee_score'],
+                  questions: q['questions'],
+              )
+          ));
+    });
+    print(challenges);
+   return challenges;
   }
 }

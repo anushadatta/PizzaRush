@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:PizzaRush/services/collections.dart';
 
 class ReceivedChallenge extends StatefulWidget {
   @override
@@ -6,7 +7,9 @@ class ReceivedChallenge extends StatefulWidget {
 }
 
 class _ReceivedChallengeState extends State<ReceivedChallenge> {
-  //String dropdownValue =;
+  int numChallenges;
+  Future<List> challengesList;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,172 +51,162 @@ class _ReceivedChallengeState extends State<ReceivedChallenge> {
             child:ListView(
                 scrollDirection: Axis.vertical,
                 children: <Widget>[
-                  Card(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Row(
-
-                            children: <Widget>[
-                              SizedBox(width: 75,),
-                              Icon(Icons.timer),
-                              SizedBox(width: 75,),
-                              Text('Time',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                              SizedBox(width: 75,),
-                              Text('50s',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                            ]),
-                        SizedBox(height: 25),
-                        Row(
-
-                            children: <Widget>[
-                              SizedBox(width: 75,),
-                              Icon(Icons.score),
-                              SizedBox(width: 75,),
-                              Text('Score',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                              SizedBox(width: 75,),
-                              Text('230',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                            ]),
-                        SizedBox(height: 25),
-                        Row(
-
-                            children: <Widget>[
-                              SizedBox(width: 75,),
-
-                              Icon(Icons.subject),
-                              SizedBox(width: 75,),
-                              Text('Topic',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                              SizedBox(width: 75,),
-                              Text('Algebra',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                            ]),
-                        SizedBox(height: 25),
-                        Row(
-
-                            children: <Widget>[
-                              SizedBox(width: 75,),
-                              Icon(Icons.sort),
-                              SizedBox(width: 70,),
-                              Text('Difficulty',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                              SizedBox(width: 50,),
-                              Text('Easy',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                            ]),
-                        SizedBox(height: 25),
-                        Row(
-
-                            children: <Widget>[
-                              SizedBox(width: 75,),
-                              Icon(Icons.account_circle),
-                              SizedBox(width: 65,),
-                              Text('Challenger',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                              SizedBox(width: 35,),
-                              Text('Jules',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.6,),
-                            ]),
-                        SizedBox(height: 25),
-                        ButtonBar(
-                          children: <Widget>[
-                            FlatButton(
-                              child: const Text('Accept',textScaleFactor: 1.6,style: TextStyle(fontWeight: FontWeight.bold)),
-                              onPressed: () { /* ... */ },
-                            ),
-                            FlatButton(
-                              child: const Text('Decline',textScaleFactor: 1.6,style: TextStyle(fontWeight: FontWeight.bold)),
-                              onPressed: () { /* ... */ },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 50),
-
-
-
-                  Card(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Row(
-
-                            children: <Widget>[
-                              SizedBox(width: 75,),
-                              Icon(Icons.timer),
-                              SizedBox(width: 75,),
-                              Text('Time',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                              SizedBox(width: 75,),
-                              Text('20s',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                            ]),
-                        SizedBox(height: 25),
-                        Row(
-
-                            children: <Widget>[
-                              SizedBox(width: 75,),
-                              Icon(Icons.score),
-                              SizedBox(width: 75,),
-                              Text('Score',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                              SizedBox(width: 75,),
-                              Text('200',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                            ]),
-                        SizedBox(height: 25),
-                        Row(
-
-                            children: <Widget>[
-                              SizedBox(width: 75,),
-
-                              Icon(Icons.subject),
-                              SizedBox(width: 75,),
-                              Text('Topic',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                              SizedBox(width: 75,),
-                              Text('Calculus',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                            ]),
-                        SizedBox(height: 25),
-                        Row(
-
-                            children: <Widget>[
-                              SizedBox(width: 75,),
-                              Icon(Icons.sort),
-                              SizedBox(width: 70,),
-                              Text('Difficulty',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                              SizedBox(width: 50,),
-                              Text('Hard',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                            ]),
-                        SizedBox(height: 25),
-                        Row(
-
-                            children: <Widget>[
-                              SizedBox(width: 75,),
-                              Icon(Icons.account_circle),
-                              SizedBox(width: 65,),
-                              Text('Challenger',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                              SizedBox(width: 35,),
-                              Text('Sandy',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.6,),
-                            ]),
-                        SizedBox(height: 25),
-                        ButtonBar(
-                          children: <Widget>[
-                            FlatButton(
-                              child: const Text('Accept',textScaleFactor: 1.6,style: TextStyle(fontWeight: FontWeight.bold)),
-                              onPressed: () { /* ... */ },
-                            ),
-                            FlatButton(
-                              child: const Text('Decline',textScaleFactor: 1.6,style: TextStyle(fontWeight: FontWeight.bold)),
-                              onPressed: () { /* ... */ },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-
-
-
-
-
-
+                 buildChallengesList(challengesList)
                 ]
             )
         )],
-    ));}}
+    ));
+  }
+
+  Widget buildChallengesList(apiData) => FutureBuilder<dynamic> (
+      future: apiData,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) return Container(
+            height: 300,
+            width: 400,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Center(
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    margin: EdgeInsets.all(5),
+                    child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.green)),
+                  ),
+                ),
+              ],
+            )
+        );
+        if (snapshot.data.length == 0) {
+          return Container(
+              height: 300,
+              width: 400,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Center(
+                    child: Container(
+                      height: 200,
+                      width: 200,
+                      margin: EdgeInsets.all(5),
+                      child: Text("No Challenges Here!", style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700
+                      ),
+                        textAlign: TextAlign.center,),
+                    ),
+                  ),
+                ],
+              )
+          );
+        }
+
+
+        numChallenges = snapshot.data.length;
+        return new SingleChildScrollView(
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  for(int i = 0; i < snapshot.data.length; i++)
+
+                    Card(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Row(
+
+                              children: <Widget>[
+                                SizedBox(width: 75,),
+                                Icon(Icons.timer),
+                                SizedBox(width: 75,),
+                                Text('Time',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
+                                SizedBox(width: 75,),
+                                Text('${snapshot.data[i].challengers_time}s',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
+                              ]),
+                          SizedBox(height: 25),
+                          Row(
+
+                              children: <Widget>[
+                                SizedBox(width: 75,),
+                                Icon(Icons.score),
+                                SizedBox(width: 75,),
+                                Text('Score',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
+                                SizedBox(width: 75,),
+                                Text('${snapshot.data[i].challengers_score}',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
+                              ]),
+                          SizedBox(height: 25),
+                          Row(
+
+                              children: <Widget>[
+                                SizedBox(width: 75,),
+
+                                Icon(Icons.subject),
+                                SizedBox(width: 75,),
+                                Text('Topic',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
+                                SizedBox(width: 75,),
+                                Text('${snapshot.data[i].topic}',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
+                              ]),
+                          SizedBox(height: 25),
+                          Row(
+
+                              children: <Widget>[
+                                SizedBox(width: 75,),
+                                Icon(Icons.sort),
+                                SizedBox(width: 70,),
+                                Text('Difficulty',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
+                                SizedBox(width: 50,),
+                                Text('${snapshot.data[i].level}',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
+                              ]),
+                          SizedBox(height: 25),
+                          Row(
+
+                              children: <Widget>[
+                                SizedBox(width: 75,),
+                                Icon(Icons.account_circle),
+                                SizedBox(width: 65,),
+                                Text('Challenger',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
+                                SizedBox(width: 35,),
+                                Text('${snapshot.data[i].challenger}',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1,),
+                              ]),
+                          SizedBox(height: 25),
+                          ButtonBar(
+                            children: <Widget>[
+                              FlatButton(
+                                child: const Text('Accept',textScaleFactor: 1.6,style: TextStyle(fontWeight: FontWeight.bold)),
+                                onPressed: () { /* ... */ },
+                              ),
+                              FlatButton(
+                                child: const Text('Decline',textScaleFactor: 1.6,style: TextStyle(fontWeight: FontWeight.bold)),
+                                onPressed: () { /* ... */ },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  SizedBox(height: 50),
+                ])
+
+
+        );
+      });
+
+
+  void initState() {
+    super.initState();
+    setState(()  {
+      challengesList = Collections().getChallenges();
+    });
+  }
+
+
+}
 
 
 
