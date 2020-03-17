@@ -1,6 +1,5 @@
 import 'package:PizzaRush/models/challenges.dart';
 import 'package:PizzaRush/models/question.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:PizzaRush/screens/login.dart';
 
 class Collections
@@ -130,4 +129,50 @@ class Collections
     print(challenges);
    return challenges;
   }
+
+  Future<List> getLeaderboardData(String topic) async {
+    
+    // List<Leaderboard> leaderboardData;  
+
+    // if(isStudent(username)) 
+    // { var usertopicRef = await databaseReference.document('users/$username/points/$topic');
+
+    //   await usertopicRef
+    //       .get()
+    //       .then((DocumentSnapshot snapshot) {
+
+    //         Leaderboard l(name: username, points: snapshot.data['points']); 
+    //         leaderboardData.add( l );
+
+    //   });
+    // }
+
+    // return leaderboardData;
+
+    List<Leaderboard> leaderboardData = [];
+
+      await databaseReference
+          .collection("users")
+          .getDocuments()
+          .then((QuerySnapshot snapshot) {
+          snapshot.documents.forEach((user) => 
+              leaderboardData.add(
+              Leaderboard(
+                name: user['firstname'],
+                points: 0,
+                uid: user['uid']
+                )      
+              )
+          ); 
+        }); 
+
+      for(int i=0; i<leaderboardData.length; i++){
+        if(leaderboardData[i].uid==false){
+          leaderboardData.removeAt(i);
+        }
+      }  
+      return leaderboardData; 
+  }
+
+
 }
