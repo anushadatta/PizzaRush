@@ -82,7 +82,7 @@ class Collections
     return points;
   }
 
-  Future getLeaderboardData(String topic) async {
+  Future<List> getLeaderboardData(String topic) async {
     
     // List<Leaderboard> leaderboardData;  
 
@@ -103,24 +103,26 @@ class Collections
 
     List<Leaderboard> leaderboardData = [];
 
-    if(await isStudent(username)) 
-    {
-      databaseReference
+      await databaseReference
           .collection("users")
           .getDocuments()
           .then((QuerySnapshot snapshot) {
-
           snapshot.documents.forEach((user) => 
-
               leaderboardData.add(
               Leaderboard(
                 name: user['firstname'],
-                points: user['points'].$topic['points'], 
-              )     
-            )); 
+                points: 0,
+                uid: user['uid']
+                )      
+              )
+          ); 
         }); 
-      }
 
+      for(int i=0; i<leaderboardData.length; i++){
+        if(leaderboardData[i].uid==false){
+          leaderboardData.removeAt(i);
+        }
+      }  
       return leaderboardData; 
   }
 
