@@ -20,6 +20,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  static String username;
 
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -219,6 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
     );
   }
+
 
   Widget loadingView() => Center(
     child: CircularProgressIndicator(

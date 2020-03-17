@@ -18,8 +18,11 @@ enum SingingCharacter { alpha, beta, gamma, delta, epsilon, zeta, eta, theta}
 
 class _QuestionScreenState extends State<QuestionScreen> {
   Future<List> questionList;
-  int numQuestions = 0;
+  int points;
+  bool correct = false;
+  int numQuestions;
   List<SingingCharacter> _character = [SingingCharacter.alpha, SingingCharacter.epsilon];
+  List<SingingCharacter> _correctanswers = [];
   List<List<SingingCharacter>> _options = [[SingingCharacter.alpha, SingingCharacter.beta, SingingCharacter.gamma, SingingCharacter.delta], [SingingCharacter.epsilon, SingingCharacter.zeta, SingingCharacter.eta, SingingCharacter.theta]];
 
   @override
@@ -78,16 +81,75 @@ class _QuestionScreenState extends State<QuestionScreen> {
             ],
           ),
         ),
-        body: Center(
-          child: buildQuestionList(questionList),
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                buildQuestionList(questionList),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(
+                  0.0, 15.0, 0.0, 15.0),
+              child:
+                Container(
+                  height: 50,
+                    width: 150,
+                    child: RaisedButton(
+                      child: Text('SUBMIT'),
+                      onPressed: (){
+                         for(int i=0; i<numQuestions; i++){
+                           if(_character[i] == _correctanswers[i]){
+                             setState(() {
+                               points = points + pointsIncrement(widget.level);
+                               Collections().updatePoints(widget.topicchosen, points);
+                               correct = true;
+                             });
+                           }
+                         }
+                         if(correct){
+                           Flushbar(
+                             title: 'Correct',
+                             message: 'Your answer is correct!',
+                             icon: Icon(
+                               Icons.info_outline,
+                               size: 28,
+                               color: Colors.green[900],
+                             ),
+                             leftBarIndicatorColor: Colors.green[900],
+                             duration: Duration(seconds: 3),
+                           )..show(context);
+                         }
+                         else{
+                           Flushbar(
+                             title: 'Wrong',
+                             message: 'Wrong answer please try again',
+                             icon: Icon(
+                               Icons.info_outline,
+                               size: 28,
+                               color: Colors.green[900],
+                             ),
+                             leftBarIndicatorColor: Colors.green[900],
+                             duration: Duration(seconds: 3),
+                           )..show(context);
+
+                           setState(() {
+                             _correctanswers.clear();
+                             correct = false;
+                           });
+                         }
+                      },
+                    )
+                ))
+              ],
+            ),
+          )
         )
     );
   }
 
-  Widget buildQuestionList(apiData) => FutureBuilder<dynamic>(
+  Widget buildQuestionList(apiData) => FutureBuilder<dynamic> (
       future: apiData,
       builder: (context, snapshot) {
-        if (!snapshot.hasData) return Container(
+        if (!snapshot.hasData || points==null) return Container(
             height: 300,
             width: 400,
             child: Column(
@@ -132,6 +194,21 @@ class _QuestionScreenState extends State<QuestionScreen> {
           );
         }
 
+        for(int i = 0; i < snapshot.data.length; i++){
+          if(snapshot.data[i].answer1 == snapshot.data[i].correctanswer){
+            _correctanswers.add(_options[i][0]);
+          }
+          else if(snapshot.data[i].answer2 == snapshot.data[i].correctanswer){
+            _correctanswers.add(_options[i][1]);
+          }
+          else if(snapshot.data[i].answer3 == snapshot.data[i].correctanswer){
+            _correctanswers.add(_options[i][2]);
+          }
+          else if(snapshot.data[i].answer4 == snapshot.data[i].correctanswer){
+            _correctanswers.add(_options[i][3]);
+          }
+        }
+        numQuestions = snapshot.data.length;
         return new SingleChildScrollView(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -177,7 +254,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.blueAccent)
                             ),
-                            child: Text("${snapshot.data[0].points}",
+                            child: Text("$points",
                               style: TextStyle(
                                   fontSize: 20
                               ),),
@@ -188,6 +265,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                     ],
                   )),
                   for(int i = 0; i < snapshot.data.length; i++)
+
                     Padding(
                         padding: const EdgeInsets.fromLTRB(
                             0.0, 15.0, 0.0, 0.0),
@@ -228,7 +306,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
                                           value: _options[i][0],
                                           groupValue: _character[i],
                                           onChanged: (SingingCharacter value) {
-                                            setState(() { _character[i] = value; });
+                                            setState(() { _character[i] = value;
+                                            });
                                           },
                                         ),
                                       ),
@@ -293,6 +372,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
                                               leftBarIndicatorColor: Colors.green[900],
                                               duration: Duration(seconds: 3),
                                             )..show(context);
+                                            setState(() {
+                                              points = points - hintAvail(widget.level);
+                                              Collections().updatePoints(widget.topicchosen, points);
+                                            });
                                           },
                                         )
                                       )
@@ -308,7 +391,36 @@ class _QuestionScreenState extends State<QuestionScreen> {
     super.initState();
     setState(()  {
       questionList = Collections().getQuestions(widget.level, widget.topicchosen);
+      getPoints();
     });
+  }
+
+  int pointsIncrement(String level){
+    if(level=='easy'){
+      return 10;
+    }
+    else if(level=='medium'){
+      return 20;
+    }
+    else if(level=='hard'){
+      return 30;
+    }
+  }
+
+  int hintAvail(String level){
+    if(level=='easy'){
+      return 30;
+    }
+    else if(level=='medium'){
+      return 60;
+    }
+    else if(level=='hard'){
+      return 90;
+    }
+  }
+
+  void getPoints() async{
+    points = await Collections().getScore(widget.topicchosen);
   }
 
 }
