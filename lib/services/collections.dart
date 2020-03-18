@@ -156,4 +156,27 @@ class Collections
       return leaderboardData; 
   }
 
+  void uploadTeacherQuestion(Question q) async {
+
+  await databaseReference.collection("questions")
+      .document(q.level).collection(q.topic).document(q.id)
+      .setData({
+
+        'id': q.id,
+        'question': q.question,
+        'topic': q.topic,
+        'level': q.level,
+        'storyContext': q.storyContext,
+        'character': q.character,
+        'answer1': q.answer1,
+        'answer2': q.answer2,
+        'answer3': q.answer3,
+        'answer4': q.answer4,
+        'correctanswer': q.correctanswer,
+        'imageUrl': q.imageUrl,
+        'hint': q.hint,
+        'points': q.points, 
+      }); 
+  }
+
 }

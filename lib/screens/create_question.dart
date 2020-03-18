@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:PizzaRush/models/question.dart';  
+
+import 'package:PizzaRush/models/question.dart';
+import 'package:PizzaRush/services/collections.dart';   
 
 class CreateQuestion extends StatefulWidget {
   @override
@@ -17,9 +19,9 @@ class _CreateQuestionState extends State<CreateQuestion> {
   final correctAnswer = TextEditingController();
   final hints = TextEditingController();
 
-  String dropdownValue_topic='Algebra'; 
-  String dropdownValue_level='Easy'; 
-  String dropdownValue_character='Chef'; 
+  String dropdownValue_topic='algebra'; 
+  String dropdownValue_level='easy'; 
+  String dropdownValue_character='chef'; 
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
                   dropdownValue_topic = newValue;
                 });
               },
-              items: <String>['Algebra', 'Geometry', 'Trigonometry']
+              items: <String>['algebra', 'geometry', 'trigonometry']
                 .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -99,7 +101,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
                   dropdownValue_level = newValue;
                 });
               },
-              items: <String>['Easy', 'Medium', 'Hard']
+              items: <String>['easy', 'medium', 'hard']
                 .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -138,7 +140,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
                   dropdownValue_character = newValue;
                 });
               },
-              items: <String>['Chef', 'Cashier', 'Customer']
+              items: <String>['chef', 'cashier', 'customer']
                 .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -313,7 +315,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
             child: Container(
               padding: EdgeInsets.all(20),
               child: TextField(
-                controller: a3, 
+                controller: a4, 
                 decoration: InputDecoration(
                   labelText: 'Enter candidate answer 4.',
                   border: OutlineInputBorder(),
@@ -337,7 +339,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
             child: Container(
               padding: EdgeInsets.all(20),
               child: TextField(
-                controller: a3, 
+                controller: correctAnswer, 
                 decoration: InputDecoration(
                   labelText: 'Enter correct candidate answer.',
                   border: OutlineInputBorder(),
@@ -359,13 +361,13 @@ class _CreateQuestionState extends State<CreateQuestion> {
                 // Instantiate Question object for upload to firebase.
                 Question q = Question(
 
-                  id: '', // NEED TO UPDATE QUESTION ID 
+                  id: 'qX', // NEED TO UPDATE QUESTION ID 
                   topic: dropdownValue_topic,
                   level: dropdownValue_level,
                   character: dropdownValue_character,
                   storyContext: storyContext.text,
                   question: mathQuestion.text,
-                  imageUrl:'',
+                  imageUrl:'', // NEED TO UPDATE IMAGE URL 
                   answer1: a1.text,
                   answer2: a2.text,
                   answer3: a3.text,
@@ -376,8 +378,10 @@ class _CreateQuestionState extends State<CreateQuestion> {
                   );
 
                 // Pass object q to a services function that uploads it to firebase.
+                Collections().uploadTeacherQuestion(q);
 
               },
+
               child: const Text(
                 'UPLOAD',
                 style: TextStyle(fontSize: 20)
