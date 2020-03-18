@@ -60,7 +60,7 @@ class Collections
   }
 
   void updatePoints(String topic, int points) async{
-    var usertopicRef = await databaseReference.document('users/$username/history/$topic');
+    var usertopicRef = await databaseReference.document('users/$username/points/$topic');
 
       await usertopicRef
           .updateData({'points': points});
@@ -95,7 +95,7 @@ class Collections
   }
 
   Future<int> getScore(String topic) async {
-    var usertopicRef = await databaseReference.document('users/$username/history/$topic');
+    var usertopicRef = await databaseReference.document('users/$username/points/$topic');
     int points;
     await usertopicRef
         .get()

@@ -6,6 +6,8 @@ import 'package:PizzaRush/services/collections.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:PizzaRush/screens/resultscreen.dart';
 
+import 'dart:math';
+
 class QuestionScreen extends StatefulWidget {
   var topicchosen;
   var level;
@@ -19,6 +21,7 @@ enum SingingCharacter { alpha, beta, gamma, delta, epsilon, zeta, eta, theta}
 
 class _QuestionScreenState extends State<QuestionScreen> {
   Future<List> questionList;
+  int numassets = 1;
   int points;
   int numQuestions;
   List<SingingCharacter> _character = [SingingCharacter.alpha, SingingCharacter.epsilon];
@@ -171,20 +174,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
           );
         }
 
-        for(int i = 0; i < snapshot.data.length; i++){
-          if(snapshot.data[i].answer1 == snapshot.data[i].correctanswer){
-            _correctanswers.add(_options[i][0]);
-          }
-          else if(snapshot.data[i].answer2 == snapshot.data[i].correctanswer){
-            _correctanswers.add(_options[i][1]);
-          }
-          else if(snapshot.data[i].answer3 == snapshot.data[i].correctanswer){
-            _correctanswers.add(_options[i][2]);
-          }
-          else if(snapshot.data[i].answer4 == snapshot.data[i].correctanswer){
-            _correctanswers.add(_options[i][3]);
-          }
-        }
+        int _numberCols = (numassets / 3).ceil();
         numQuestions = snapshot.data.length;
         return new SingleChildScrollView(
             child: Column(
@@ -241,129 +231,100 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
                     ],
                   )),
-                  
-                  for(int i = 0; i < snapshot.data.length; i++)
 
-                    Padding(
-                        padding: const EdgeInsets.fromLTRB(
-                            0.0, 15.0, 0.0, 0.0),
-                        child:
-                        Container(
-                            height: MediaQuery.of(context).size.height * 1.35,
-                            width: MediaQuery.of(context).size.width * 1,
-                            child: Card(
-                                elevation: 10,
-                                child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment
-                                        .center,
-                                    children: [
-                                      Container(
-                                        width: MediaQuery.of(context).size.width * 1,
-                                        height: MediaQuery.of(context).size.height * 0.8,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            fit: BoxFit.fill,
-                                            image: NetworkImage(snapshot.data[i].imageUrl),
-                                          ),
-                                        ),
-                                      ),
-                                      Text('Q: ${snapshot.data[i].question}',
-                                      style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.w700
-                                      ),
-                                      textAlign: TextAlign.center,),
+        Padding(
+        padding: const EdgeInsets.fromLTRB(
+        20.0, 15.0, 20.0, 0.0),
+        child:
+                      Text('Q: ${snapshot.data[0].question}', style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w600
+                      ))),
 
-                                      ListTile(
-                                        title: Text('A. ${snapshot.data[i].answer1}',
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w600
-                                        )),
-                                        leading: Radio(
-                                          value: _options[i][0],
-                                          groupValue: _character[i],
-                                          onChanged: (SingingCharacter value) {
-                                            setState(() { _character[i] = value;
-                                            });
-                                          },
-                                        ),
-                                      ),
-                                      ListTile(
-                                        title: Text('B. ${snapshot.data[i].answer2}',
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w600
-                                            )),
-                                        leading: Radio(
-                                          value:_options[i][1],
-                                          groupValue: _character[i],
-                                          onChanged: (SingingCharacter value) {
-                                            setState(() { _character[i] = value; });
-                                          },
-                                        ),
-                                      ),
-
-                                      ListTile(
-                                        title: Text('C. ${snapshot.data[i].answer3}',
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w600
-                                            )),
-                                        leading: Radio(
-                                          value: _options[i][2],
-                                          groupValue: _character[i],
-                                          onChanged: (SingingCharacter value) {
-                                            setState(() { _character[i] = value; });
-                                          },
-                                        ),
-                                      ),
-
-                                      ListTile(
-                                        title: Text('D. ${snapshot.data[i].answer4}',
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w600
-                                            )),
-                                        leading: Radio(
-                                          value:_options[i][3],
-                                          groupValue: _character[i],
-                                          onChanged: (SingingCharacter value) {
-                                            setState(() { _character[i] = value; });
-                                          },
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        width: 100,
-                                        child: RaisedButton(
-                                          child: Text('HINT'),
-                                          onPressed: (){
-                                            Flushbar(
-                                              title: 'HINT',
-                                              message: '${snapshot.data[i].hint}',
-                                              icon: Icon(
-                                                Icons.info_outline,
-                                                size: 28,
-                                                color: Colors.green[900],
-                                              ),
-                                              leftBarIndicatorColor: Colors.green[900],
-                                              duration: Duration(seconds: 3),
-                                            )..show(context);
-                                            setState(() {
-                                              points = points - hintAvail(widget.level);
-                                              Collections().updatePoints(widget.topicchosen, points);
-                                            });
-                                          },
+                      Column(
+                      children: <Widget>[
+                      ListView.builder(
+                      itemBuilder: (_, index) {
+                      return Container(
+                      height: 120,
+                      child: Center(
+                      child: ListView.builder(
+                      itemBuilder: (i , _) {
+                      return  Container(
+                        width: 100,
+                        height: 0,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(snapshot.data[0].imageUrl),
+                          ),
+                        ),
+                      );
+                      },
+                      itemCount: min(numassets - index * 3, 3),
+                      scrollDirection: Axis.horizontal,
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      ),
+                      ),
+                      );
+                      },
+                      itemCount: _numberCols,
+                      shrinkWrap: true,
+                      ),
+                      Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                      IconButton(
+                      icon: Icon(Icons.remove),
+                      iconSize: 80,
+                      disabledColor: Colors.grey,
+                      color: Colors.red,
+                      onPressed: (numassets==0) ? null : decrementRoses,
+                      ),
+                      IconButton(
+                      icon: Icon(Icons.add),
+                      iconSize: 80,
+                      disabledColor: Colors.grey,
+                      color: Colors.green,
+                      onPressed: (numassets==12) ? null : incrementRoses,
+                      ),
+                      ],
+                      ),
+                        numassets>1 ? Text((numassets).toString()+' tomatoes', style: TextStyle(fontSize: 24),) : numassets==1 ? Text('1 tomato', style: TextStyle(fontSize: 24)): Text('')
+                      ],
+                      ),
+                                      Center(
+                                        child: Container(
+                                            height: 50,
+                                            width: 100,
+                                            child: RaisedButton(
+                                              child: Text('HINT'),
+                                              onPressed: (){
+                                                Flushbar(
+                                                  title: 'HINT',
+                                                  message: '${snapshot.data[0].hint}',
+                                                  icon: Icon(
+                                                    Icons.info_outline,
+                                                    size: 28,
+                                                    color: Colors.green[900],
+                                                  ),
+                                                  leftBarIndicatorColor: Colors.green[900],
+                                                  duration: Duration(seconds: 3),
+                                                )..show(context);
+                                                setState(() {
+                                                  points = points - hintAvail(widget.level);
+                                                  Collections().updatePoints(widget.topicchosen, points);
+                                                });
+                                              },
+                                            )
                                         )
                                       )
                                     ]
-                                ))))
-                ])
+                                )
+                );});
 
 
-        );
-      });
 
   void initState() {
     super.initState();
@@ -399,6 +360,18 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   void getPoints() async{
     points = await Collections().getScore(widget.topicchosen);
+  }
+
+  void decrementRoses(){
+    setState(() {
+      numassets-=1;
+    });
+  }
+
+  void incrementRoses(){
+    setState(() {
+      numassets+=1;
+    });
   }
 
 }
