@@ -1,6 +1,8 @@
 import 'package:PizzaRush/models/challenges.dart';
 import 'package:PizzaRush/models/question.dart';
 import 'package:PizzaRush/screens/login.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:PizzaRush/models/leaderboardClass.dart';
 
 class Collections
 {
@@ -59,12 +61,13 @@ class Collections
   void updatePoints(String topic, int points) async{
     var usertopicRef = await databaseReference.document('users/$username/history/$topic');
 
-    try {
       await usertopicRef
           .updateData({'points': points});
-    } catch (e) {
-      print(e.toString());
-    }
+
+
+      await databaseReference.collection('users').document(username)
+          .updateData({'points_$topic': points});
+
   }
 
   Future<int> getPreviousAttempts(String topic, String level) async{
@@ -99,7 +102,7 @@ class Collections
         points = snapshot.data['points'];
 
       });
-
+    print(points);
     return points;
   }
 
@@ -141,7 +144,7 @@ class Collections
               leaderboardData.add(
               Leaderboard(
                 name: user['firstname'],
-                points: 0,
+                points: user['points_$topic'],
                 uid: user['uid']
                 )      
               )

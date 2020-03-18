@@ -110,7 +110,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                          }
 
                            setState(() {
-                             Navigator.push(context, CupertinoPageRoute(builder: (context) => ResultScreen(correct: correct, level: widget.level, topicchosen: widget.topicchosen)));
+                             Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => ResultScreen(correct: correct, level: widget.level, topicchosen: widget.topicchosen)));
                            });
 
                       },
