@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:PizzaRush/models/challenges.dart';
 import 'package:PizzaRush/models/question.dart';
 import 'package:PizzaRush/screens/login.dart';
@@ -17,10 +18,10 @@ class Collections
     await document
         .get()
         .then((DocumentSnapshot snapshot) {
-          isStudent = snapshot.data['uid'];
+      isStudent = snapshot.data['uid'];
 
     });
-  return isStudent;
+    return isStudent;
   }
 
   Future<List> getQuestions(String levelselected, String topicselected) async {
@@ -51,8 +52,8 @@ class Collections
                   imageUrl: q['imageUrl'],
                   hint: q['hint'],
                   points: q['points']
-          )
-      ));
+              )
+          ));
     });
     print(questions);
     return questions;
@@ -96,13 +97,13 @@ class Collections
   Future<int> getScore(String topic) async {
     var usertopicRef = await databaseReference.document('users/$username/history/$topic');
     int points;
-      await usertopicRef
-          .get()
-          .then((DocumentSnapshot snapshot) {
-        points = snapshot.data['points'];
+    await usertopicRef
+        .get()
+        .then((DocumentSnapshot snapshot) {
+      points = snapshot.data['points'];
 
-      });
-    print(points);
+    });
+
     return points;
   }
 
@@ -117,69 +118,83 @@ class Collections
       snapshot.documents.forEach((q) =>
           challenges.add(
               Challenges(
-                  id: q['id'],
-                  challenger: q['challenger'],
-                  level: q['level'],
-                  topic: q['topic'],
-                  challengers_time: q['challengers_time'],
-                  challengers_score: q['challengers_score'],
-                  challengee_time: q['challengee_time'],
-                  challengee_score: q['challengee_score'],
-                  questions: q['questions'],
+                id: q['id'],
+                challenger: q['challenger'],
+                level: q['level'],
+                topic: q['topic'],
+                challengers_time: q['challengers_time'],
+                challengers_score: q['challengers_score'],
+                challengee_time: q['challengee_time'],
+                challengee_score: q['challengee_score'],
+                questions: q['questions'],
               )
           ));
     });
     print(challenges);
-   return challenges;
+    return challenges;
   }
 
   Future<List> getLeaderboardData(String topic) async {
     List<Leaderboard> leaderboardData = [];
 
-      await databaseReference
-          .collection("users")
-          .getDocuments()
-          .then((QuerySnapshot snapshot) {
-          snapshot.documents.forEach((user) => 
-              leaderboardData.add(
+    await databaseReference
+        .collection("users")
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((user) =>
+          leaderboardData.add(
               Leaderboard(
                 name: user['firstname'],
                 points: user['points_$topic'],
                 uid: user['uid']
                 )      
               )
-          ); 
-        }); 
+          )
+      );
+    });
 
-      for(int i=0; i<leaderboardData.length; i++){
-        if(leaderboardData[i].uid==false){
-          leaderboardData.removeAt(i);
-        }
-      }  
-      return leaderboardData; 
+    for(int i=0; i<leaderboardData.length; i++){
+      if(leaderboardData[i].uid==false){
+        leaderboardData.removeAt(i);
+      }
+    }
+    return leaderboardData;
   }
 
   void uploadTeacherQuestion(Question q) async {
 
-  await databaseReference.collection("questions")
-      .document(q.level).collection(q.topic).document(q.id)
-      .setData({
+    await databaseReference.collection("questions")
+        .document(q.level).collection(q.topic).document(q.id)
+        .setData({
 
-        'id': q.id,
-        'question': q.question,
-        'topic': q.topic,
-        'level': q.level,
-        'storyContext': q.storyContext,
-        'character': q.character,
-        'answer1': q.answer1,
-        'answer2': q.answer2,
-        'answer3': q.answer3,
-        'answer4': q.answer4,
-        'correctanswer': q.correctanswer,
-        'imageUrl': q.imageUrl,
-        'hint': q.hint,
-        'points': q.points, 
-      }); 
+      'id': q.id,
+      'question': q.question,
+      'topic': q.topic,
+      'level': q.level,
+      'storyContext': q.storyContext,
+      'character': q.character,
+      'answer1': q.answer1,
+      'answer2': q.answer2,
+      'answer3': q.answer3,
+      'answer4': q.answer4,
+      'correctanswer': q.correctanswer,
+      'imageUrl': q.imageUrl,
+      'hint': q.hint,
+      'points': q.points,
+    });
   }
+  
+  Future<List> getScoreHistory(String topic) async {
+    var userTopicRef = await databaseReference.document('users/$username/history/$topic');
+    List scoreHistory = [];
+    await userTopicRef
+        .get()
+        .then((DocumentSnapshot snapshot) {
+      scoreHistory.add(snapshot.data['points']);
+      scoreHistory.add(snapshot.data['deadline']);
+    });
+    return scoreHistory;
+  }
+
 
 }
