@@ -22,6 +22,7 @@ enum SingingCharacter { alpha, beta, gamma, delta, epsilon, zeta, eta, theta}
 class _QuestionScreenState extends State<QuestionScreen> {
   Future<List> questionList;
   int numassets = 1;
+  String correctanswer;
   int points;
   int numQuestions;
   List<SingingCharacter> _character = [SingingCharacter.alpha, SingingCharacter.epsilon];
@@ -102,12 +103,12 @@ class _QuestionScreenState extends State<QuestionScreen> {
                          List<bool> correct = [];
                          for(int i=0; i<numQuestions; i++){
                            correct.add(false);
-                           if(_character[i] == _correctanswers[i]){
+                           if(numassets.toString() == correctanswer){
                              setState(() {
                                points = points + pointsIncrement(widget.level);
                                Collections().updatePoints(widget.topicchosen, points);
                                Collections().updateQuestionDone(widget.topicchosen, widget.level);
-                               correct[i] = true;
+                               correct[i]=true;
                              });
                            }
                          }
@@ -176,6 +177,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
         int _numberCols = (numassets / 3).ceil();
         numQuestions = snapshot.data.length;
+        correctanswer = snapshot.data[0].correctanswer;
         return new SingleChildScrollView(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -291,7 +293,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       ),
                       ],
                       ),
-                        numassets>1 ? Text((numassets).toString()+' tomatoes', style: TextStyle(fontSize: 24),) : numassets==1 ? Text('1 tomato', style: TextStyle(fontSize: 24)): Text('')
+                        numassets>1 ? Text((numassets).toString()+' ${snapshot.data[0].storyContext}', style: TextStyle(fontSize: 24),) : numassets==1 ? Text((numassets).toString()+' ${snapshot.data[0].storyContext}', style: TextStyle(fontSize: 24)): Text('')
                       ],
                       ),
                                       Center(
