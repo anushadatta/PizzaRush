@@ -32,7 +32,7 @@ class _LeaderboardState extends State<Leaderboard> {
             children: [
               Algebra(),
               Geometry(),
-              Trigo(),
+              Trigonometry(),
             ],
           ),
         ),

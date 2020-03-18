@@ -179,7 +179,7 @@ class Collections
       'points': q.points,
     });
   }
-
+  
   Future<List> getScoreHistory(String topic) async {
     var userTopicRef = await databaseReference.document('users/$username/history/$topic');
     List scoreHistory = [];

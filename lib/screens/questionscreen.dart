@@ -4,6 +4,7 @@ import 'user_account.dart';
 import 'package:PizzaRush/models/question.dart';
 import 'package:PizzaRush/services/collections.dart';
 import 'package:flushbar/flushbar.dart';
+import 'package:PizzaRush/screens/resultscreen.dart';
 
 class QuestionScreen extends StatefulWidget {
   var topicchosen;
@@ -19,7 +20,6 @@ enum SingingCharacter { alpha, beta, gamma, delta, epsilon, zeta, eta, theta}
 class _QuestionScreenState extends State<QuestionScreen> {
   Future<List> questionList;
   int points;
-  bool correct = false;
   int numQuestions;
   List<SingingCharacter> _character = [SingingCharacter.alpha, SingingCharacter.epsilon];
   List<SingingCharacter> _correctanswers = [];
@@ -96,46 +96,23 @@ class _QuestionScreenState extends State<QuestionScreen> {
                     child: RaisedButton(
                       child: Text('SUBMIT'),
                       onPressed: (){
+                         List<bool> correct = [];
                          for(int i=0; i<numQuestions; i++){
+                           correct.add(false);
                            if(_character[i] == _correctanswers[i]){
                              setState(() {
                                points = points + pointsIncrement(widget.level);
                                Collections().updatePoints(widget.topicchosen, points);
-                               correct = true;
+                               Collections().updateQuestionDone(widget.topicchosen, widget.level);
+                               correct[i] = true;
                              });
                            }
                          }
-                         if(correct){
-                           Flushbar(
-                             title: 'Correct',
-                             message: 'Your answer is correct!',
-                             icon: Icon(
-                               Icons.info_outline,
-                               size: 28,
-                               color: Colors.green[900],
-                             ),
-                             leftBarIndicatorColor: Colors.green[900],
-                             duration: Duration(seconds: 3),
-                           )..show(context);
-                         }
-                         else{
-                           Flushbar(
-                             title: 'Wrong',
-                             message: 'Wrong answer please try again',
-                             icon: Icon(
-                               Icons.info_outline,
-                               size: 28,
-                               color: Colors.green[900],
-                             ),
-                             leftBarIndicatorColor: Colors.green[900],
-                             duration: Duration(seconds: 3),
-                           )..show(context);
 
                            setState(() {
-                             _correctanswers.clear();
-                             correct = false;
+                             Navigator.push(context, CupertinoPageRoute(builder: (context) => ResultScreen(correct: correct, level: widget.level, topicchosen: widget.topicchosen)));
                            });
-                         }
+
                       },
                     )
                 ))
