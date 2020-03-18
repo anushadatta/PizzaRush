@@ -144,14 +144,13 @@ class Collections
       snapshot.documents.forEach((user) =>
           leaderboardData.add(
               Leaderboard(
-                name: user['firstname'],
-                points: user['points_$topic'],
-                uid: user['uid']
-                )      
+                  name: user['firstname'],
+                  points: user['points_$topic'],
+                  uid: user['uid']
               )
           )
       );
-    });
+    } );
 
     for(int i=0; i<leaderboardData.length; i++){
       if(leaderboardData[i].uid==false){
