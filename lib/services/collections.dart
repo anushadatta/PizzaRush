@@ -184,7 +184,7 @@ class Collections
   }
   
   Future<List> getScoreHistory(String topic) async {
-    var userTopicRef = await databaseReference.document('users/$username/history/$topic');
+    var userTopicRef = databaseReference.document('users/$username/history/$topic');
     List scoreHistory = [];
     await userTopicRef
         .get()
@@ -195,5 +195,29 @@ class Collections
     return scoreHistory;
   }
 
+  Future<List> getClassData(String topic) async {
+    var studentRef = databaseReference.document('users/$username');
+    List studentId = [];
+    await studentRef
+        .get()
+        .then((DocumentSnapshot snapshot) {
+          studentId = snapshot.data['students'];
+    });
+
+    List classData = new List(studentId.length);
+
+    for(var i = 0; i < studentId.length; i++) {
+      List scoreHistory = [];
+      var userTopicRef = databaseReference.document('users/${studentId[i]}/history/$topic');
+      await userTopicRef
+          .get()
+          .then((DocumentSnapshot snapshot) {
+            scoreHistory.add(snapshot.data['points']);
+            scoreHistory.add(snapshot.data['deadline']);
+      });
+      classData[i] = scoreHistory;
+    }
+    return classData;
+  }
 
 }
