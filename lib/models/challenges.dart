@@ -6,6 +6,7 @@ class Challenges
   String level;
   String outcome;
   String challenger;
+  String challengee; 
   int challengeeScore;
   int challengeeTime;
   int challengersScore;
@@ -18,6 +19,7 @@ class Challenges
     this.topic,
     this.outcome,
     this.challenger,
+    this.challengee,
     this.challengeeScore,
     this.challengeeTime,
     this.challengersScore,
