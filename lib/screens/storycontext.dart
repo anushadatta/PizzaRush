@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:PizzaRush/screens/selectquestionlevel.dart';
-import 'package:flutter/material.dart';
+import 'user_account.dart';
 import 'package:flutter/cupertino.dart';
 
 class StoryContextA extends StatefulWidget {
@@ -13,6 +13,56 @@ class _StoryContextAState extends State<StoryContextA> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Column(
+            children: <Widget>[
+              Padding(
+                  padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                  child: Text('SOLVE QUESTIONS',
+                    style: TextStyle(
+                        fontSize: 26
+                    ),)),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                child:
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(
+                      height: 15.0,
+                      width:30.0,
+                      child: Image.asset('assets/PizzaRush.png'),
+                    ),
+                    Text('PizzaRush',
+                      style: TextStyle(
+                          fontSize: 10
+                      ),),
+                  ],
+                ),)
+
+            ],
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.green[800],
+
+
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.account_circle,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                // Should go to User Account page
+                // UserAccount()
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => UserAccount()),
+                );
+              },
+            )
+          ],
+        ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -45,6 +95,56 @@ class _StoryContextGState extends State<StoryContextG> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Column(
+          children: <Widget>[
+            Padding(
+                padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                child: Text('SOLVE QUESTIONS',
+                  style: TextStyle(
+                      fontSize: 26
+                  ),)),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+              child:
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: 15.0,
+                    width:30.0,
+                    child: Image.asset('assets/PizzaRush.png'),
+                  ),
+                  Text('PizzaRush',
+                    style: TextStyle(
+                        fontSize: 10
+                    ),),
+                ],
+              ),)
+
+          ],
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.green[800],
+
+
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.account_circle,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              // Should go to User Account page
+              // UserAccount()
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserAccount()),
+              );
+            },
+          )
+        ],
+      ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -77,6 +177,56 @@ class _StoryContextTState extends State<StoryContextT> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Column(
+          children: <Widget>[
+            Padding(
+                padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                child: Text('SOLVE QUESTIONS',
+                  style: TextStyle(
+                      fontSize: 26
+                  ),)),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+              child:
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: 15.0,
+                    width:30.0,
+                    child: Image.asset('assets/PizzaRush.png'),
+                  ),
+                  Text('PizzaRush',
+                    style: TextStyle(
+                        fontSize: 10
+                    ),),
+                ],
+              ),)
+
+          ],
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.green[800],
+
+
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.account_circle,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              // Should go to User Account page
+              // UserAccount()
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserAccount()),
+              );
+            },
+          )
+        ],
+      ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(

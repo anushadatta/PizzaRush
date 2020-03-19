@@ -28,8 +28,6 @@ class Collections
   Future<List> getQuestions(String levelselected, String topicselected) async {
 
     List <Question> questions = [];
-    print(levelselected);
-    print(topicselected);
 
     var topicRef = await databaseReference.collection('questions/$levelselected/$topicselected');
 
@@ -57,7 +55,6 @@ class Collections
               )
           ));
     });
-    print(questions);
     return questions;
   }
 
@@ -132,7 +129,6 @@ class Collections
               )
           ));
     });
-    print(challenges);
     return challenges;
   }
   
@@ -161,7 +157,6 @@ class Collections
               )
           ));
     });
-    print(challengesSent);
     return challengesSent;
   }
 
