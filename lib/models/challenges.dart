@@ -1,5 +1,3 @@
-import 'package:PizzaRush/models/question.dart';
-
 class Challenges
 {
   String id;

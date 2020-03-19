@@ -13,30 +13,22 @@ class Challenge extends StatefulWidget {
 class _ChallengeState extends State<Challenge> {
   String dropdownValue1 = 'Algebra';
   String dropdownValue2 = 'Easy';
-  String _value;
+  String dropdownValue3 = 'palakasomani@gmail.com';
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
-    appBar: AppBar(
-      title: Text('CHALLENGE',
-      style: TextStyle(fontSize: 35, color: Colors.black87, fontWeight: FontWeight.bold)),
-      centerTitle: true,
-      backgroundColor: Colors.grey[50],
-      elevation: 0.0,
-
-      ),
-
     body: SingleChildScrollView(
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
           children: <Widget>[
 
-            SizedBox(height: 50),
+            SizedBox(height: 25),
 
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -171,37 +163,71 @@ class _ChallengeState extends State<Challenge> {
                         .toList(),
                   ),]),
 
+            SizedBox(height: 25),
 
-            SizedBox(height: 40),
+            Center(child: Text('Select User to Challenge',textAlign: TextAlign.center,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold))),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+
+                  DropdownButton<String>(
+                    value: dropdownValue3,
+                    icon: Icon(Icons.arrow_drop_down,size: 50),
+                    iconSize: 30,
+                    elevation: 26,
+                    style: TextStyle(
+                      color: Colors.green[800],fontSize: 25,
+                    ),
+                    underline: Container(
+                      height: 4,
+                      width: 12,
+
+                    ),
+                    onChanged: (String newValue) {
+                      setState(() {
+                        dropdownValue3 = newValue;
+                      });
+                    },
+
+                    // EXTRACT USERS TO CHALLENGE FROM FIREBASE 
+                    items: <String>['palakasomani@gmail.com', '' ]
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    })
+                        .toList(),
+                  ),
+                ]
+              ),
+            
+            SizedBox(height: 30),
+            
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
 
                   Center(
-                    child: SizedBox(
-                        height: 60,
-                        width: 230,
-                        child:
-                        RaisedButton(
+                        child: RaisedButton(
                           color: Colors.white70,
                           onPressed: (){
-                            Navigator.push(context, CupertinoPageRoute(builder: (context) => ChallengeQuestion()));
+                            Navigator.push(context, CupertinoPageRoute(builder: (context) => ChallengeQuestion(topic: dropdownValue1, level: dropdownValue2, challengee: dropdownValue3,)));
                           },
 
                           child: Text(
                               "CHALLENGE",style: TextStyle(fontSize: 30, color: Colors.black87, fontWeight: FontWeight.bold)),
                         )
-                    ),
-                  ),
-
+                  )
                 ]
             )
           ]
       )
     ),
-
-
-        );}}
+  );
+  }
+}
 
 
 
