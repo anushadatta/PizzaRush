@@ -88,16 +88,18 @@ class _ResultScreenState extends State<ResultScreen> {
             ),
 
             Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
 
                 children: <Widget> [
                   Text('POINTS EARNED:',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 30.0)
+                      style: TextStyle(fontSize: 25)
                   ),
 
+                  SizedBox(width: 30),
+
                   Container(
-                    margin: const EdgeInsets.all(30.0),
+                    //margin: const EdgeInsets.all(30.0),
                     padding: const EdgeInsets.all(18.0),
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.black87, width: 2)
@@ -111,12 +113,12 @@ class _ResultScreenState extends State<ResultScreen> {
             ),
 
             Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
 
                 children: <Widget> [
                   Text('GRADE :',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20.0)
+                      style: TextStyle(fontSize: 25.0)
                   ),
 
                   Container(
@@ -139,7 +141,7 @@ class _ResultScreenState extends State<ResultScreen> {
                 children: <Widget> [
                   Text('TOTAL POINTS:',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20.0)
+                      style: TextStyle(fontSize: 25.0)
                   ),
 
                   Container(
@@ -164,13 +166,13 @@ class _ResultScreenState extends State<ResultScreen> {
                 {
                   Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => Home()));
                 },
-                child: Text('CANCEL',
+                child: Text('OK',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 28.0)
                 )
             ),
 
-            SizedBox(height: 80.0),
+            SizedBox(height: 50.0),
 
           ]
       )
