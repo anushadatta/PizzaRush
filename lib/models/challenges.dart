@@ -6,10 +6,10 @@ class Challenges
   String level;
   String outcome;
   String challenger;
-  int challengee_score;
-  int challengee_time;
-  int challengers_score;
-  int challengers_time;
+  int challengeeScore;
+  int challengeeTime;
+  int challengersScore;
+  int challengersTime;
 
   Challenges({
     this.id,
@@ -18,10 +18,10 @@ class Challenges
     this.topic,
     this.outcome,
     this.challenger,
-    this.challengee_score,
-    this.challengee_time,
-    this.challengers_score,
-    this.challengers_time,
+    this.challengeeScore,
+    this.challengeeTime,
+    this.challengersScore,
+    this.challengersTime,
   });
 
 }

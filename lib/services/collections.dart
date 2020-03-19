@@ -4,7 +4,7 @@ import 'package:PizzaRush/models/question.dart';
 import 'package:PizzaRush/screens/login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:PizzaRush/models/leaderboardClass.dart';
-import 'package:PizzaRush/screens/challengesSent.dart';
+import 'package:PizzaRush/screens/sent_challenges.dart';
 
 class Collections
 {
@@ -121,10 +121,10 @@ class Collections
                 challenger: q['challenger'],
                 level: q['level'],
                 topic: q['topic'],
-                challengers_time: q['challengers_time'],
-                challengers_score: q['challengers_score'],
-                challengee_time: q['challengee_time'],
-                challengee_score: q['challengee_score'],
+                challengersTime: q['challengers_time'],
+                challengersScore: q['challengers_score'],
+                challengeeTime: q['challengee_time'],
+                challengeeScore: q['challengee_score'],
                 questions: q['questions'],
               )
           ));
@@ -147,10 +147,10 @@ class Collections
                 challenger: q['challenger'],
                 level: q['level'],
                 topic: q['topic'],
-                challengers_time: q['challengers_time'],
-                challengers_score: q['challengers_score'],
-                challengee_time: q['challengee_time'],
-                challengee_score: q['challengee_score'],
+                challengersTime: q['challengers_time'],
+                challengersScore: q['challengers_score'],
+                challengeeTime: q['challengee_time'],
+                challengeeScore: q['challengee_score'],
                 questions: q['questions'],
                 outcome: q['outcome'],
 

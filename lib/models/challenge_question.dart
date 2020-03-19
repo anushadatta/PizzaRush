@@ -1,4 +1,4 @@
-class Question
+class ChallengeQuestion
 {
   String id;
   String question;
@@ -11,7 +11,7 @@ class Question
   String correctanswer;
   int points;
 
-  Question({
+  ChallengeQuestion({
     this.id,
     this.question,
     this.level,
