@@ -4,6 +4,7 @@ import 'package:PizzaRush/models/question.dart';
 import 'package:PizzaRush/screens/login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:PizzaRush/models/leaderboardClass.dart';
+import 'package:PizzaRush/screens/challengesSent.dart';
 
 class Collections
 {
