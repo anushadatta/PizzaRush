@@ -133,6 +133,35 @@ class Collections
     print(challenges);
     return challenges;
   }
+  
+  Future<List<SentChallenges>> getSentChallenges() async{
+
+    List<SentChallenges> challengesSent = [];
+    var challengesRef = await databaseReference.collection('users/$username/sent_challenges');
+
+    await challengesRef
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((q) =>
+          challengesSent.add(
+              SentChallenges(
+                id: q['id'],
+                challenger: q['challenger'],
+                level: q['level'],
+                topic: q['topic'],
+                challengers_time: q['challengers_time'],
+                challengers_score: q['challengers_score'],
+                challengee_time: q['challengee_time'],
+                challengee_score: q['challengee_score'],
+                questions: q['questions'],
+                outcome: q['outcome'],
+
+              )
+          ));
+    });
+    print(challengesSent);
+    return challengesSent;
+  }
 
   Future<List> getLeaderboardData(String topic) async {
     List<Leaderboard> leaderboardData = [];
