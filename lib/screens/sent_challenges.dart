@@ -18,7 +18,7 @@ class _SentChallengeState extends State<SentChallenge> {
       questions: [1,2,3],
       topic: 'algebra',
       level: 'easy',
-      outcome: 'won',
+      outcome: 'LOST',
       challenger: 'mehul.kumar171@gmail.com',
       challengee: 'palakasomani@gmail.com', 
       challengeeScore: 10,
@@ -32,7 +32,7 @@ class _SentChallengeState extends State<SentChallenge> {
       questions: [1,2,3],
       topic: 'algebra',
       level: 'easy',
-      outcome: 'won',
+      outcome: 'WON',
       challenger: 'mehul.kumar171@gmail.com',
       challengee: 'palakasomani@gmail.com', 
       challengeeScore: 10,
@@ -60,7 +60,7 @@ class _SentChallengeState extends State<SentChallenge> {
 
            Text("SENT CHALLENGES", 
            textAlign: TextAlign.center,
-           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0), 
+           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0), 
            ), 
         
            Expanded(
