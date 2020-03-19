@@ -126,7 +126,7 @@ class _ReceivedChallengeState extends State<ReceivedChallenge> {
                                 SizedBox(width: 75,),
                                 Text('Time',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
                                 SizedBox(width: 75,),
-                                Text('${snapshot.data[i].challengers_time}s',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
+                                Text('${snapshot.data[i].challengersTime}s',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
                               ]),
                           SizedBox(height: 25),
                           Row(
@@ -137,7 +137,7 @@ class _ReceivedChallengeState extends State<ReceivedChallenge> {
                                 SizedBox(width: 75,),
                                 Text('Score',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
                                 SizedBox(width: 75,),
-                                Text('${snapshot.data[i].challengers_score}',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
+                                Text('${snapshot.data[i].challengersScore}',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
                               ]),
                           SizedBox(height: 25),
                           Row(
