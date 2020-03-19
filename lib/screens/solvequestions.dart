@@ -1,4 +1,6 @@
 import 'package:PizzaRush/screens/selectquestionlevel.dart';
+import 'storycontext.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -35,7 +37,7 @@ class _SolveQuestionsState extends State<SolveQuestions> {
                 child: RaisedButton(
                   onPressed: () async {
                     setState(() {
-                  Navigator.push(context, CupertinoPageRoute(builder: (context) => SelectQuestionLevel(topicchosen: 'algebra')));
+                  Navigator.push(context, CupertinoPageRoute(builder: (context) => StoryContextA()));
 
                     });
                   },
@@ -59,7 +61,7 @@ class _SolveQuestionsState extends State<SolveQuestions> {
                 child: RaisedButton(
                   onPressed: () async {
                     setState(() {
-                      Navigator.push(context, CupertinoPageRoute(builder: (context) => SelectQuestionLevel(topicchosen: 'trigonometry')));
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) => StoryContextT()));
                     });
                   },
                   child: Text(
@@ -82,7 +84,7 @@ class _SolveQuestionsState extends State<SolveQuestions> {
                 child: RaisedButton(
                   onPressed: () async {
                     setState(() {
-                      Navigator.push(context, CupertinoPageRoute(builder: (context) => SelectQuestionLevel(topicchosen: 'geometry')));
+                      Navigator.push(context, CupertinoPageRoute(builder: (context) => StoryContextG()));
 
                     });
                   },
