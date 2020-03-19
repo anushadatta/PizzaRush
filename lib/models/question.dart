@@ -14,6 +14,7 @@ class Question
   String imageUrl;
   String hint;
   int points;
+  String type;
 
   Question({
     this.id,
@@ -29,7 +30,8 @@ class Question
     this.correctanswer,
     this.imageUrl,
     this.hint,
-    this.points
+    this.points,
+    this.type
   });
 
 

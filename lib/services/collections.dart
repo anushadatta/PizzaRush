@@ -52,7 +52,8 @@ class Collections
                   correctanswer: q['correctanswer'],
                   imageUrl: q['imageUrl'],
                   hint: q['hint'],
-                  points: q['points']
+                  points: q['points'],
+                  type: q['type'],
               )
           ));
     });
@@ -135,9 +136,9 @@ class Collections
     return challenges;
   }
   
-  Future<List<SentChallenges>> getSentChallenges() async{
+  Future<List<Challenges>> getSentChallenges() async{
 
-    List<SentChallenges> challengesSent = [];
+    List<Challenges> challengesSent = [];
     var challengesRef = await databaseReference.collection('users/$username/sent_challenges');
 
     await challengesRef
@@ -145,7 +146,7 @@ class Collections
         .then((QuerySnapshot snapshot) {
       snapshot.documents.forEach((q) =>
           challengesSent.add(
-              SentChallenges(
+              Challenges(
                 id: q['id'],
                 challenger: q['challenger'],
                 level: q['level'],

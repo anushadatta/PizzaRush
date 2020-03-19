@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'user_account.dart';
 import 'questionscreen.dart';
+import 'package:PizzaRush/services/collections.dart';
+import 'package:flushbar/flushbar.dart';
 
 class SelectQuestionLevel extends StatefulWidget {
   var topicchosen;
@@ -12,6 +14,11 @@ class SelectQuestionLevel extends StatefulWidget {
 }
 
 class _SelectQuestionLevelState extends State<SelectQuestionLevel> {
+
+  Future<int> easyattempts;
+  Future<int> mediumattempts;
+  bool mediumlock = true;
+  bool hardlock = true;
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +121,9 @@ class _SelectQuestionLevelState extends State<SelectQuestionLevel> {
                   width: 300.0,
                   height: 50.0,
                   child: RaisedButton(
-                    onPressed: () async {
+                    onPressed: mediumlock? (){
+                      showInfoFlushbar(context);
+                    }: () async {
                       setState(() {
                         Navigator.push(context, CupertinoPageRoute(
                             builder: (context) =>
@@ -122,7 +131,22 @@ class _SelectQuestionLevelState extends State<SelectQuestionLevel> {
                                     level: 'medium')));
                       });
                     },
-                    child: Text(
+                    child: mediumlock?
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'MEDIUM',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        Icon(Icons.lock)
+                      ]
+                    ) : Text(
                       'MEDIUM',
                       style: TextStyle(
                         fontSize: 20.0,
@@ -140,7 +164,9 @@ class _SelectQuestionLevelState extends State<SelectQuestionLevel> {
                   width: 300.0,
                   height: 50.0,
                   child: RaisedButton(
-                    onPressed: () async {
+                    onPressed: hardlock? (){
+                      showInfoFlushbar(context);
+                    }: () async {
                       setState(() {
                         Navigator.push(context, CupertinoPageRoute(
                             builder: (context) =>
@@ -148,7 +174,22 @@ class _SelectQuestionLevelState extends State<SelectQuestionLevel> {
                                     level: 'hard')));
                       });
                     },
-                    child: Text(
+                    child: hardlock?
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'HARD',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          Icon(Icons.lock)
+                        ]
+                    ) : Text(
                       'HARD',
                       style: TextStyle(
                         fontSize: 20.0,
@@ -165,4 +206,45 @@ class _SelectQuestionLevelState extends State<SelectQuestionLevel> {
       )
     );
   }
+
+  void setLockStatus() async{
+    if(await easyattempts>=1){
+      setState(() {
+        mediumlock = false;
+      });
+    }
+
+    if(await mediumattempts>=1){
+      setState(() {
+        hardlock = false;
+      });
+    }
+  }
+
+  void initState() {
+    super.initState();
+    setState(() {
+      easyattempts =
+          Collections().getPreviousAttempts(widget.topicchosen, 'easy');
+      mediumattempts =
+          Collections().getPreviousAttempts(widget.topicchosen, 'medium');
+      setLockStatus();
+    });
+  }
+
+  void showInfoFlushbar(BuildContext context) {
+    Flushbar(
+      title: 'Level Locked!',
+      message: 'Please attempt the previous levels first.',
+      icon: Icon(
+        Icons.info_outline,
+        size: 28,
+        color: Colors.green[900],
+      ),
+      leftBarIndicatorColor: Colors.green[900],
+      duration: Duration(seconds: 3),
+    )..show(context);
+  }
+
+
 }

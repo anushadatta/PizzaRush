@@ -105,9 +105,8 @@ class _ReceivedChallengeState extends State<ReceivedChallenge> {
               )
           );
         }
-
-
         numChallenges = snapshot.data.length;
+
         return new SingleChildScrollView(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,7 +195,6 @@ class _ReceivedChallengeState extends State<ReceivedChallenge> {
 
         );
       });
-
 
   void initState() {
     super.initState();

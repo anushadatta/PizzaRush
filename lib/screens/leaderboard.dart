@@ -22,8 +22,8 @@ class _LeaderboardState extends State<Leaderboard> {
               indicatorColor: Colors.green[800],
               tabs: [
                 Tab(text: 'Algebra',),
-                Tab(text: 'Trigonometry',),
                 Tab(text: 'Geometry',),
+                Tab(text: 'Trigonometry',),
               ],
             ),
           ),

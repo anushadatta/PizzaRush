@@ -69,46 +69,46 @@ class _ChallengeQuestionState extends State<ChallengeQuestion> {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
 
-              ListTile(
-                title: const Text('Lafayette'),
-                leading: Radio(
-                  value: Answers.a,
-                  groupValue: _character,
-                  onChanged: (SingingCharacter value) {
-                    setState(() { _character = value; });
-                  },
-                ),
-              ),
-              ListTile(
-                title: const Text('Thomas Jefferson'),
-                leading: Radio(
-                  value: SingingCharacter.jefferson,
-                  groupValue: _character,
-                  onChanged: (SingingCharacter value) {
-                    setState(() { _character = value; });
-                  },
-                ),
-              ),
-              ListTile(
-                title: const Text('Lafayette'),
-                leading: Radio(
-                  value: SingingCharacter.lafayette,
-                  groupValue: _character,
-                  onChanged: (SingingCharacter value) {
-                    setState(() { _character = value; });
-                  },
-                ),
-              ),
-              ListTile(
-                title: const Text('Lafayette'),
-                leading: Radio(
-                  value: SingingCharacter.lafayette,
-                  groupValue: _character,
-                  onChanged: (SingingCharacter value) {
-                    setState(() { _character = value; });
-                  },
-                ),
-              ),
+//              ListTile(
+//                title: const Text('Lafayette'),
+//                leading: Radio(
+//                  value: Answers.a,
+//                  groupValue: _character,
+//                  onChanged: (SingingCharacter value) {
+//                    setState(() { _character = value; });
+//                  },
+//                ),
+//              ),
+//              ListTile(
+//                title: const Text('Thomas Jefferson'),
+//                leading: Radio(
+//                  value: SingingCharacter.jefferson,
+//                  groupValue: _character,
+//                  onChanged: (SingingCharacter value) {
+//                    setState(() { _character = value; });
+//                  },
+//                ),
+//              ),
+//              ListTile(
+//                title: const Text('Lafayette'),
+//                leading: Radio(
+//                  value: SingingCharacter.lafayette,
+//                  groupValue: _character,
+//                  onChanged: (SingingCharacter value) {
+//                    setState(() { _character = value; });
+//                  },
+//                ),
+//              ),
+//              ListTile(
+//                title: const Text('Lafayette'),
+//                leading: Radio(
+//                  value: SingingCharacter.lafayette,
+//                  groupValue: _character,
+//                  onChanged: (SingingCharacter value) {
+//                    setState(() { _character = value; });
+//                  },
+//                ),
+//              ),
 
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
