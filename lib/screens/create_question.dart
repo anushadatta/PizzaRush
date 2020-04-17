@@ -10,7 +10,7 @@ class CreateQuestion extends StatefulWidget {
 
 class _CreateQuestionState extends State<CreateQuestion> {
 
-  final storyContext = TextEditingController();
+  // final storyContext = TextEditingController();
   final mathQuestion = TextEditingController();
   final a1 = TextEditingController();
   final a2 = TextEditingController();
@@ -20,8 +20,9 @@ class _CreateQuestionState extends State<CreateQuestion> {
   final hints = TextEditingController();
 
   String dropdownValue_topic='algebra'; 
-  String dropdownValue_level='easy'; 
-  String dropdownValue_character='chef'; 
+  String dropdownValue_level='easy';
+  String dropdownValue_qtype='mcq'; 
+  String dropdownValue_type='tomatoes'; 
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +116,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
           Padding(
             padding: const EdgeInsets.fromLTRB(12.0, 18.0,12.0,5.0),
             child: Text(
-            'SELECT GAME WORLD CHARACTER',
+            'SELECT QUESTION TYPE',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
             ),
@@ -124,7 +125,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
           Center(
             
             child: DropdownButton<String>(
-              value: dropdownValue_character,
+              value: dropdownValue_qtype,
               icon: Icon(Icons.arrow_downward),
               iconSize: 20,
               elevation: 16,
@@ -137,10 +138,10 @@ class _CreateQuestionState extends State<CreateQuestion> {
               ),
               onChanged: (String newValue) {
                 setState(() {
-                  dropdownValue_character = newValue;
+                  dropdownValue_qtype = newValue;
                 });
               },
-              items: <String>['chef', 'cashier', 'customer']
+              items: <String>['mcq', 'count', 'size']
                 .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -154,29 +155,45 @@ class _CreateQuestionState extends State<CreateQuestion> {
           SizedBox(height:20),
 
           Padding(
-            padding: const EdgeInsets.fromLTRB(12.0 ,12.0 ,12.0,0),
+            padding: const EdgeInsets.fromLTRB(12.0, 18.0,12.0,5.0),
             child: Text(
-            'CONTEXT STORY',
+            'SELECT QUESTION THEME ITEM',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
             ),
           ),
 
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
-
-            child: Container(
-              padding: EdgeInsets.all(20),
-              child: TextField(
-                maxLines: 5,
-                controller: storyContext, 
-                decoration: InputDecoration(
-                  labelText: 'Write story context here.',
-                  border: OutlineInputBorder(),
-                ),
+          Center(
+            
+            child: DropdownButton<String>(
+              value: dropdownValue_type,
+              icon: Icon(Icons.arrow_downward),
+              iconSize: 20,
+              elevation: 16,
+              style: TextStyle(
+                color: Colors.black87
               ),
+              underline: Container(
+                height: 2,
+                color: Colors.black87
+              ),
+              onChanged: (String newValue) {
+                setState(() {
+                  dropdownValue_type = newValue;
+                });
+              },
+              items: <String>['tomatoes', 'coins', 'plate', 'bill', 'pizza']
+                .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value, textAlign: TextAlign.center),
+                  );
+                })
+                .toList(),
             ),
           ),
+
+          SizedBox(height:20),
 
           Padding(
             padding: const EdgeInsets.fromLTRB(12.0 ,12.0 ,12.0,0),
@@ -364,10 +381,9 @@ class _CreateQuestionState extends State<CreateQuestion> {
                   id: 'qX', // NEED TO UPDATE QUESTION ID 
                   topic: dropdownValue_topic,
                   level: dropdownValue_level,
-                  character: dropdownValue_character,
-                  storyContext: storyContext.text,
                   question: mathQuestion.text,
-                  imageUrl:'', // NEED TO UPDATE IMAGE URL 
+                  imageUrl: getImageURL(dropdownValue_type),
+                  type: dropdownValue_qtype, 
                   answer1: a1.text,
                   answer2: a2.text,
                   answer3: a3.text,
@@ -410,3 +426,24 @@ int calculatePoints(String level)
   else
     return 0; 
 } 
+
+String getImageURL(String item)
+{ 
+  List<String> urls=[''];
+  
+  if(item=='tomatoes')
+    return urls[0];
+  
+  else if(item=='coins')
+    return urls[0];
+  
+  else if(item=='plate')
+    return urls[0];
+
+  else if(item=='bill')
+    return urls[0];
+
+  else if(item=='pizza')
+    return urls[0];
+  
+}
