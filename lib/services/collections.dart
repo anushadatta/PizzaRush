@@ -4,7 +4,6 @@ import 'package:PizzaRush/models/question.dart';
 import 'package:PizzaRush/screens/login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:PizzaRush/models/leaderboardClass.dart';
-import 'package:PizzaRush/screens/sent_challenges.dart';
 
 class Collections
 {
@@ -37,21 +36,21 @@ class Collections
       snapshot.documents.forEach((q) =>
           questions.add(
               Question(
-                  id: q['id'],
-                  question: q['question'],
-                  level: levelselected,
-                  topic: topicselected,
-                  storyContext: q['storyContext'],
-                  character: q['character'],
-                  answer1: q['answer1'],
-                  answer2: q['answer2'],
-                  answer3: q['answer3'],
-                  answer4: q['answer4'],
-                  correctanswer: q['correctanswer'],
-                  imageUrl: q['imageUrl'],
-                  hint: q['hint'],
-                  points: q['points'],
-                  type: q['type'],
+                id: q['id'],
+                question: q['question'],
+                level: levelselected,
+                topic: topicselected,
+                storyContext: q['storyContext'],
+                character: q['character'],
+                answer1: q['answer1'],
+                answer2: q['answer2'],
+                answer3: q['answer3'],
+                answer4: q['answer4'],
+                correctanswer: q['correctanswer'],
+                imageUrl: q['imageUrl'],
+                hint: q['hint'],
+                points: q['points'],
+                type: q['type'],
               )
           ));
     });
@@ -61,12 +60,12 @@ class Collections
   void updatePoints(String topic, int points) async{
     var usertopicRef = await databaseReference.document('users/$username/points/$topic');
 
-      await usertopicRef
-          .updateData({'points': points});
+    await usertopicRef
+        .updateData({'points': points});
 
 
-      await databaseReference.collection('users').document(username)
-          .updateData({'points_$topic': points});
+    await databaseReference.collection('users').document(username)
+        .updateData({'points_$topic': points});
 
   }
 
@@ -131,7 +130,7 @@ class Collections
     });
     return challenges;
   }
-  
+
   Future<List<Challenges>> getSentChallenges() async{
 
     List<Challenges> challengesSent = [];
@@ -209,7 +208,7 @@ class Collections
       'type': q.type,
     });
   }
-  
+
   Future<List> getScoreHistory(String topic) async {
     var userTopicRef = databaseReference.document('users/$username/history/$topic');
     List scoreHistory = [];
@@ -228,7 +227,7 @@ class Collections
     await studentRef
         .get()
         .then((DocumentSnapshot snapshot) {
-          studentId = snapshot.data['students'];
+      studentId = snapshot.data['students'];
     });
 
     List classData = new List(studentId.length);
@@ -239,12 +238,37 @@ class Collections
       await userTopicRef
           .get()
           .then((DocumentSnapshot snapshot) {
-            scoreHistory.add(snapshot.data['points']);
-            scoreHistory.add(snapshot.data['deadline']);
+        scoreHistory.add(snapshot.data['points']);
+        scoreHistory.add(snapshot.data['deadline']);
       });
       classData[i] = scoreHistory;
     }
     return classData;
+  }
+
+  Future<String> getTeacher() async{
+    String teacher;
+    await databaseReference.collection('users').document('$username')
+        .get()
+        .then((DocumentSnapshot snapshot) {
+      teacher = snapshot.data['teacher'];
+    });
+  return teacher;
+  }
+
+  Future<List> getAllStudents() async {
+    String teacher = await getTeacher();
+    print("$teacher");
+    List students = [];
+    await databaseReference.collection('users').document('$teacher')
+        .get()
+        .then((DocumentSnapshot snapshot) {
+      students.add(snapshot.data['students']);
+    });
+
+
+    return students[0];
+
   }
 
 }
