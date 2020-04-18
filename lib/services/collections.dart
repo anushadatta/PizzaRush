@@ -222,8 +222,8 @@ class Collections
       'question': q.question,
       'topic': q.topic,
       'level': q.level,
-      'storyContext': q.storyContext,
-      'character': q.character,
+      // 'storyContext': q.storyContext,
+      // 'character': q.character,
       'answer1': q.answer1,
       'answer2': q.answer2,
       'answer3': q.answer3,
@@ -232,6 +232,7 @@ class Collections
       'imageUrl': q.imageUrl,
       'hint': q.hint,
       'points': q.points,
+      'type': q.type,
     });
   }
   

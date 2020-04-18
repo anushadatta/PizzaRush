@@ -24,5 +24,4 @@ class ChallengeQuestion
     this.points
   });
 
-
 }

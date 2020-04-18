@@ -121,9 +121,8 @@ class _ForgotScreenState extends State<ForgotScreen> {
                                 ),
                                 color: Colors.white,
                               ),
-                            )),
-
-
+                            )
+                          ),
                       ]
                   )
                 ))
