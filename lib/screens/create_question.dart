@@ -380,7 +380,7 @@ class _CreateQuestionState extends State<CreateQuestion> {
                 // Instantiate Question object for upload to firebase.
                 Question q = Question(
 
-                  id: 'qX', // NEED TO UPDATE QUESTION ID 
+                  id: DateTime.now().toString(), // NEED TO UPDATE QUESTION ID 
                   topic: dropdownValue_topic,
                   level: dropdownValue_level,
                   question: mathQuestion.text,
