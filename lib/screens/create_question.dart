@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flushbar/flushbar.dart';
 
 import 'package:PizzaRush/models/question.dart';
 import 'package:PizzaRush/services/collections.dart';   
@@ -395,7 +397,20 @@ class _CreateQuestionState extends State<CreateQuestion> {
 
                 // Pass object q to a services function that uploads it to firebase.
                 Collections().uploadTeacherQuestion(q);
+                
+                dropdownValue_topic= 'algebra';
+                dropdownValue_level='easy';
+                mathQuestion.clear();
+                dropdownValue_type='tomatoes';
+                dropdownValue_qtype='mcq'; 
+                a1.clear();
+                a2.clear();
+                a3.clear();
+                a4.clear();
+                correctAnswer.clear();
+                hints.clear();
 
+                showQuestionUploaded(context);
               },
 
               child: const Text(
@@ -447,3 +462,17 @@ String getImageURL(String item)
     return urls[0];
   
 }
+
+void showQuestionUploaded(BuildContext context) {
+    Flushbar(
+      title: 'Success!',
+      message: 'Question has been uploaded to database!',
+      icon: Icon(
+        Icons.done_outline,
+        size: 28,
+        color: Colors.green[900],
+      ),
+      leftBarIndicatorColor: Colors.green[900],
+      duration: Duration(seconds: 3),
+    )..show(context);
+  }
