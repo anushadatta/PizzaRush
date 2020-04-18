@@ -11,9 +11,9 @@ class Challenge extends StatefulWidget {
 }
 
 class _ChallengeState extends State<Challenge> {
-  String dropdownValue1 = 'Algebra';
-  String dropdownValue2 = 'Easy';
-  String dropdownValue3 = 'palakasomani@gmail.com';
+  String _topicValue;
+  String _difficultyValue;
+  String _challengerValue;
 
 
   @override
@@ -84,39 +84,41 @@ class _ChallengeState extends State<Challenge> {
               ],
             ),
 
-
-
             Row(
               //mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
                 children: <Widget>[
-                  SizedBox(width: 150,),
-                  DropdownButton<String>(
-                    value: dropdownValue1,
-                    icon: Icon(Icons.arrow_drop_down,size: 50),
-                    iconSize: 30,
-                    elevation: 26,
-                    style: TextStyle(
-                      color: Colors.green[800],fontSize: 25,
+                  Container(
+                    width: 392.0,
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                    child: DropdownButton<String>(
+                      hint: Text('Topic'),
+                      style: TextStyle(
+                        color: Colors.green[800],fontSize: 25,
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          _topicValue = value;
+                        });
+                      },
+                      value: _topicValue,
+                      elevation: 16,
+                      items: <String>['Algebra', 'Geometry','Trigonometry']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value.toLowerCase(),
+                          child: Text(value, textAlign: TextAlign.center),
+                        );
+                      })
+                          .toList(),
+                      underline: Container(
+                        height: 2,
+                        color: Colors.green[600],
+                      ),
                     ),
-                    underline: Container(
-                      height: 4,
-                      width: 12,
-                    ),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        dropdownValue1 = newValue;
-                      });
-                    },
-                    items: <String>['Algebra', 'Geometry','Trigonometry']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value, textAlign: TextAlign.center),
-                      );
-                    })
-                        .toList(),
-
-                  ),]),
+                  )
+                ]
+            ),
 
             SizedBox(height: 20),
             Row(
@@ -129,76 +131,70 @@ class _ChallengeState extends State<Challenge> {
               ],
             ),
 
-
-
             Row(
               //mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
                 children: <Widget>[
-                  SizedBox(width: 160,),
-                  DropdownButton<String>(
-                    value: dropdownValue2,
-                    icon: Icon(Icons.arrow_drop_down,size: 50),
-                    iconSize: 30,
-                    elevation: 26,
-                    style: TextStyle(
-                      color: Colors.green[800],fontSize: 25,
+                  Container(
+                    width: 392.0,
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                    child: DropdownButton<String>(
+                      hint: Text('Difficulty'),
+                      style: TextStyle(
+                        color: Colors.green[800],fontSize: 25,
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          _difficultyValue = value;
+                        });
+                      },
+                      value: _difficultyValue,
+                      elevation: 16,
+                      items: <String>['Easy', 'Medium', 'Hard']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value.toLowerCase(),
+                          child: Text(value, textAlign: TextAlign.center),
+                        );
+                      })
+                          .toList(),
+                      underline: Container(
+                        height: 2,
+                        color: Colors.green[600],
+                      ),
                     ),
-                    underline: Container(
-                      height: 4,
-                      width: 12,
-
-                    ),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        dropdownValue2 = newValue;
-                      });
-                    },
-                    items: <String>['Easy', 'Medium', 'Hard']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    })
-                        .toList(),
-                  ),]),
+                  )
+                ]
+            ),
 
             SizedBox(height: 25),
 
-            Center(child: Text('Select User to Challenge',textAlign: TextAlign.center,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold))),
+            Center(child: Text('User to Challenge',textAlign: TextAlign.center,style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold))),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-
-                  DropdownButton<String>(
-                    value: dropdownValue3,
-                    icon: Icon(Icons.arrow_drop_down,size: 50),
-                    iconSize: 30,
-                    elevation: 26,
-                    style: TextStyle(
-                      color: Colors.green[800],fontSize: 25,
+                  Container(
+                    padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
+                    width: 230.0,
+                    height: 60.0,
+                    child: TextFormField(
+                      maxLines: 1,
+                      keyboardType: TextInputType.text,
+                      autofocus: false,
+                      decoration: InputDecoration(
+                          enabledBorder: new OutlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.green[800], width: 2.0)
+                          ),
+                          focusedBorder: new OutlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.green[800], width: 2.0)
+                          ),
+                          hintText: 'User ID',
+                      ),
+                      onChanged: (val) {
+                        setState(() => _challengerValue = val);
+                      },
                     ),
-                    underline: Container(
-                      height: 4,
-                      width: 12,
-
-                    ),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        dropdownValue3 = newValue;
-                      });
-                    },
-
-                    // EXTRACT USERS TO CHALLENGE FROM FIREBASE 
-                    items: <String>['palakasomani@gmail.com', '' ]
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    })
-                        .toList(),
                   ),
                 ]
               ),
@@ -213,7 +209,7 @@ class _ChallengeState extends State<Challenge> {
                         child: RaisedButton(
                           color: Colors.white70,
                           onPressed: (){
-                            Navigator.push(context, CupertinoPageRoute(builder: (context) => ChallengeQuestion(topic: dropdownValue1, level: dropdownValue2, challengee: dropdownValue3,)));
+                            Navigator.push(context, CupertinoPageRoute(builder: (context) => ChallengeQuestion(topic: _topicValue, level: _difficultyValue, challengee: _challengerValue,)));
                           },
 
                           child: Text(
