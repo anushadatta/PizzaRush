@@ -43,7 +43,7 @@ class _ReceivedChallengeState extends State<ReceivedChallenge> {
         Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text('Received Challenges',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 3,maxLines: 2,)]),
+              Text('Received Challenges',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),textScaleFactor: 3,maxLines: 2,)]),
         SizedBox(height: 40),
         Container(
             margin: EdgeInsets.symmetric(vertical: 20),
@@ -121,9 +121,9 @@ class _ReceivedChallengeState extends State<ReceivedChallenge> {
                           Row(
 
                               children: <Widget>[
-                                SizedBox(width: 75,),
+                                SizedBox(width: 20,),
                                 Icon(Icons.timer),
-                                SizedBox(width: 75,),
+                                SizedBox(width: 30,),
                                 Text('Time',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
                                 SizedBox(width: 75,),
                                 Text('${snapshot.data[i].challengersTime}s',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
@@ -132,45 +132,45 @@ class _ReceivedChallengeState extends State<ReceivedChallenge> {
                           Row(
 
                               children: <Widget>[
-                                SizedBox(width: 75,),
+                                SizedBox(width: 20,),
                                 Icon(Icons.score),
-                                SizedBox(width: 75,),
+                                SizedBox(width: 30,),
                                 Text('Score',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                                SizedBox(width: 75,),
+                                SizedBox(width: 69,),
                                 Text('${snapshot.data[i].challengersScore}',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
                               ]),
                           SizedBox(height: 25),
                           Row(
 
                               children: <Widget>[
-                                SizedBox(width: 75,),
+                                SizedBox(width: 20,),
 
                                 Icon(Icons.subject),
-                                SizedBox(width: 75,),
+                                SizedBox(width: 30,),
                                 Text('Topic',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                                SizedBox(width: 75,),
+                                SizedBox(width: 74,),
                                 Text('${snapshot.data[i].topic}',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
                               ]),
                           SizedBox(height: 25),
                           Row(
 
                               children: <Widget>[
-                                SizedBox(width: 75,),
+                                SizedBox(width: 20,),
                                 Icon(Icons.sort),
-                                SizedBox(width: 70,),
+                                SizedBox(width: 30,),
                                 Text('Difficulty',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                                SizedBox(width: 50,),
+                                SizedBox(width: 43,),
                                 Text('${snapshot.data[i].level}',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
                               ]),
                           SizedBox(height: 25),
                           Row(
 
                               children: <Widget>[
-                                SizedBox(width: 75,),
+                                SizedBox(width: 20,),
                                 Icon(Icons.account_circle),
-                                SizedBox(width: 65,),
+                                SizedBox(width: 30,),
                                 Text('Challenger',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                                SizedBox(width: 35,),
+                                SizedBox(width: 27,),
                                 Text('${snapshot.data[i].challenger}',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1,),
                               ]),
                           SizedBox(height: 25),
