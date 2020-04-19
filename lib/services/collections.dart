@@ -57,32 +57,6 @@ class Collections
     return questions;
   }
 
-  Future<List> getChallengeQuestions(String levelselected, String topicselected) async {
-
-    List <Question> questions = [];
-
-    var topicRef = await databaseReference.collection('challenges/$levelselected/$topicselected');
-
-    await topicRef
-        .getDocuments()
-        .then((QuerySnapshot snapshot) {
-      snapshot.documents.forEach((q) =>
-          questions.add(
-              Question(
-                question: q['question'],
-                level: levelselected,
-                topic: topicselected,
-                answer1: q['answer1'],
-                answer2: q['answer2'],
-                answer3: q['answer3'],
-                answer4: q['answer4'],
-                correctanswer: q['correctanswer'],
-              )
-          ));
-    });
-    return questions;
-  }
-
   void updatePoints(String topic, int points) async{
     var usertopicRef = await databaseReference.document('users/$username/points/$topic');
 
