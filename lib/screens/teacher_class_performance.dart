@@ -18,13 +18,16 @@ class _ClassPerformanceState extends State<ClassPerformance> {
       length: 3,
       child: Scaffold(
           appBar: AppBar(
+            leading: new Container(),
+            title: Text('CLASS PERFORMANCE'),
+            centerTitle: true,
             backgroundColor: Colors.green[800],
-            title: TabBar(
+            bottom: TabBar(
               indicatorColor: Colors.green[800],
               tabs: [
                 Tab(text: 'Algebra',),
-                Tab(text: 'Trigonometry',),
                 Tab(text: 'Geometry',),
+                Tab(text: 'Trigonometry',),
               ],
             ),
           ),

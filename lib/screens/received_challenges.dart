@@ -17,7 +17,7 @@ class _ReceivedChallengeState extends State<ReceivedChallenge> {
         appBar: AppBar(
           title: Text('Challenge'),
           centerTitle: true,
-          backgroundColor: Colors.red[200],
+          backgroundColor: Colors.green[700],
 
           actions: <Widget>[
             IconButton(

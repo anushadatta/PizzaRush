@@ -214,6 +214,38 @@ class _LoginScreenState extends State<LoginScreen> {
                               textAlign: TextAlign.center,
                             ),
                           ))),
+
+                  SizedBox(height: 10),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                          padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
+                          child: Container(
+                              width: 135.0,
+                              height: 50.0,
+                              child: FlatButton(
+                                onPressed: (){
+                                  Navigator.push(context, CupertinoPageRoute(builder: (context) => ForgotScreen()));
+                                },
+                                child: Text(
+                                  'LOGIN WITH',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ))),
+                      Container(
+                        height: 40,
+                      width: 35,
+                      child: Image.asset('assets/icons8-facebook-200.png')),
+                    ],
+                  )
+
+
                 ],
               )
             )

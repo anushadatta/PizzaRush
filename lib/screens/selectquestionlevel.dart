@@ -133,8 +133,9 @@ class _SelectQuestionLevelState extends State<SelectQuestionLevel> {
                     },
                     child: mediumlock?
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
+                        SizedBox(width: 85),
                         Text(
                           'MEDIUM',
                           style: TextStyle(
@@ -144,6 +145,8 @@ class _SelectQuestionLevelState extends State<SelectQuestionLevel> {
                           ),
                           textAlign: TextAlign.center,
                         ),
+                        SizedBox(width: 50),
+
                         Icon(Icons.lock)
                       ]
                     ) : Text(
@@ -178,6 +181,7 @@ class _SelectQuestionLevelState extends State<SelectQuestionLevel> {
                     Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
+                          SizedBox(width: 105),
                           Text(
                             'HARD',
                             style: TextStyle(
@@ -187,6 +191,7 @@ class _SelectQuestionLevelState extends State<SelectQuestionLevel> {
                             ),
                             textAlign: TextAlign.center,
                           ),
+                          SizedBox(width: 80),
                           Icon(Icons.lock)
                         ]
                     ) : Text(

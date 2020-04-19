@@ -217,7 +217,8 @@ class _ChallengeState extends State<Challenge> {
                           )
                       )
                     ]
-                )
+                ),
+                SizedBox(height: 30),
               ]
           )
       ),

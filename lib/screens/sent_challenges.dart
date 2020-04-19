@@ -50,7 +50,7 @@ class _SentChallengeState extends State<SentChallenge> {
       appBar: AppBar(
         title: Text('Challenge'),
         centerTitle: true,
-        backgroundColor: Colors.green[700],
+        backgroundColor: Colors.green[800],
       ),
 
       body: Column(

@@ -34,7 +34,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
                                   SizedBox(
                                     height: MediaQuery.of(context).size.height * 0.08,
                                     width: MediaQuery.of(context).size.width * 0.18, // fixed width and height
-          
+                                    child: Image.asset('assets/PizzaRush.png'),
                                   ),
                                   Text('PizzaRush',
                                     style: TextStyle(
@@ -48,7 +48,7 @@ class _ForgotScreenState extends State<ForgotScreen> {
 
                         Padding(
                             padding: const EdgeInsets.fromLTRB(
-                                0.0, 0.0, 0.0, 0.0),
+                                0.0, 10.0, 0.0, 0.0),
                             child: Text('FORGOT PASSWORD',
                               style: TextStyle(
                                   fontSize: 20.0,
