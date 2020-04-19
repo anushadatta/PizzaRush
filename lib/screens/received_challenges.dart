@@ -14,48 +14,48 @@ class _ReceivedChallengeState extends State<ReceivedChallenge> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      appBar: AppBar(
-        title: Text('Challenge'),
-        centerTitle: true,
-        backgroundColor: Colors.red[200],
+        appBar: AppBar(
+          title: Text('Challenge'),
+          centerTitle: true,
+          backgroundColor: Colors.red[200],
 
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.account_circle,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              // Should go to User Account page
-              // UserAccount()
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.account_circle,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                // Should go to User Account page
+                // UserAccount()
 
-            },
-          )
-        ],
-      ),
-
-      body: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        SizedBox(height: 50),
-        Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Text('Received Challenges',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),textScaleFactor: 3,maxLines: 2,)]),
-        SizedBox(height: 40),
-        Container(
-            margin: EdgeInsets.symmetric(vertical: 20),
-            height:300,
-            child:ListView(
-                scrollDirection: Axis.vertical,
-                children: <Widget>[
-                 buildChallengesList(challengesList)
-                ]
+              },
             )
-        )],
-    ));
+          ],
+        ),
+
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(height: 50),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Text('Received Challenges',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),textScaleFactor: 3,maxLines: 2,)]),
+            SizedBox(height: 40),
+            Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                height:300,
+                child:ListView(
+                    scrollDirection: Axis.vertical,
+                    children: <Widget>[
+                      buildChallengesList(challengesList)
+                    ]
+                )
+            )],
+        ));
   }
 
   Widget buildChallengesList(apiData) => FutureBuilder<dynamic> (
