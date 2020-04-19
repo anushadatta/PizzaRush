@@ -282,10 +282,10 @@ class _ChallengeState extends State<Challenge> {
               })
                   .toList(),
             ),
-          ]
-      );
-    }
-  );
+    ))]
+      )
+    )); }
+
   void initState() {
     super.initState();
     setState(()  {
