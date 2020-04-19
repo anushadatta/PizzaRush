@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'user_account.dart';
-import 'package:flutter/material.dart';
 import 'package:PizzaRush/models/question.dart';
 import 'package:PizzaRush/services/collections.dart';
 import 'package:flushbar/flushbar.dart';
@@ -10,9 +9,9 @@ import 'package:PizzaRush/screens/resultscreen.dart';
 import 'dart:math';
 
 class ChallengeQuestion extends StatefulWidget {
-  final topicchosen;
-  final level;
-  final challengee;
+  var topicchosen;
+  var level;
+  var challengee;
 
   ChallengeQuestion({@required this.topicchosen, @required this.level, @required this.challengee});
   @override
@@ -72,18 +71,25 @@ class _ChallengeQuestionState extends State<ChallengeQuestion> {
             centerTitle: true,
             backgroundColor: Colors.green[800],
 
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                Icons.account_circle,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                Navigator.push(context, CupertinoPageRoute(builder: (context) => UserAccount()));
-              },
-            )
-          ],
-        )),
+
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.account_circle,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  // Should go to User Account page
+                  // UserAccount()
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => UserAccount()),
+                  );
+                },
+              )
+            ],
+          ),
+        ),
         body: SingleChildScrollView(
             child: Center(
               child: Column(
@@ -713,9 +719,10 @@ class _ChallengeQuestionState extends State<ChallengeQuestion> {
 
   void initState() {
     super.initState();
-    questions = Collections().getChallengeQuestions(widget.level, widget.topicchosen);
-    watch.reset();
-    watch.start();
+    setState(()  {
+      questionList = Collections().getQuestions(widget.level, widget.topicchosen);
+      getPoints();
+    });
   }
 
   int pointsIncrement(String level){
@@ -742,6 +749,33 @@ class _ChallengeQuestionState extends State<ChallengeQuestion> {
     }
   }
 
+  void getPoints() async{
+    points = await Collections().getScore(widget.topicchosen);
+  }
+
+  void decrementRoses(){
+    setState(() {
+      numassets-=1;
+    });
+  }
+
+  void incrementRoses(){
+    setState(() {
+      numassets+=1;
+    });
+  }
+
+  void decrementSize(){
+    setState(() {
+      index-=1;
+    });
+  }
+
+  void incrementSize(){
+    setState(() {
+      index+=1;
+    });
+  }
 
 
 }
