@@ -1,9 +1,20 @@
+import 'package:PizzaRush/screens/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'challenge.dart';
 
 class PerformanceChallenger extends StatefulWidget {
+  final points;
+  final time;
+
+  PerformanceChallenger(
+      {
+        this.points,
+        this.time
+      }
+      );
+
   @override
   _PerformanceChallengerState createState() => _PerformanceChallengerState();
 }
@@ -43,7 +54,15 @@ class _PerformanceChallengerState extends State<PerformanceChallenger> {
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Text('Performance Results',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 3,maxLines: 2,)]),
+                  Text('Performance Results',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12
+                    )
+                    ,textScaleFactor: 3,maxLines: 2,)
+                ]
+            ),
             SizedBox(height: 40),
 
             Card(
@@ -61,7 +80,7 @@ class _PerformanceChallengerState extends State<PerformanceChallenger> {
                       children: <Widget>[
                         Icon(Icons.timer),
                         Text('Your Time',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                        Text('50s',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
+                        Text('${widget.time/1000}s',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
                       ]),
                   SizedBox(height: 25),
                   Row(
@@ -69,7 +88,7 @@ class _PerformanceChallengerState extends State<PerformanceChallenger> {
                       children: <Widget>[
                         Icon(Icons.score),
                         Text('Your Score',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
-                        Text('230',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
+                        Text('${widget.points}',textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold),textScaleFactor: 1.4,),
                       ]),
                   SizedBox(height: 25),
 
@@ -83,7 +102,9 @@ class _PerformanceChallengerState extends State<PerformanceChallenger> {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       RaisedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.push(context, CupertinoPageRoute(builder: (context) => Home()));
+                        },
                         child: Text(
                             'Challenge',
                             style: TextStyle(fontSize: 20)
@@ -98,7 +119,7 @@ class _PerformanceChallengerState extends State<PerformanceChallenger> {
                     children: <Widget>[
                       RaisedButton(
                         onPressed: (){
-                          Navigator.push(context, CupertinoPageRoute(builder: (context) => Challenge()));
+                          Navigator.push(context, CupertinoPageRoute(builder: (context) => Home()));
                         },
                         child: Text(
                             'Cancel',
