@@ -5,6 +5,7 @@ Pizza Rush is a mobile (iOS & Android compatible) based application that aims to
 It provides a platform that allows students to learn and compete with one another through challenging educational content. Teachers will also be able to assess mastery of the course via data analysis and automated grading obtained through the player’s history of accomplishment in the game, in a comprehensive and continuous way.
 
 ## Features Overview
+<p align="center"><img src="assets/Banner.png" width="200"> </p>
 Pizza Rush is designed as a dual user application, with its targeted users being students and teachers. It provides different functionalities to each of its users accordingly, as has been elaborated below. 
 
 ### STUDENTS
