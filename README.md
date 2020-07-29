@@ -10,6 +10,11 @@ Pizza Rush is designed as a dual user application, with its targeted users being
 ### STUDENTS
 <b> View Player History </b>
 The student can view: Graph of the progression of points in individual Math Topics, Total Current Points, Grading Deadline, Past grades, Grading Rubric
+●	The student must be able to view current point accumulation and next upcoming grading deadline for each math topic. 
+●	The student must be able to view past performance in each math section in the form of a line chart (Y axis: points, X axis: Time)
+●	The student must also be able to see past grades for each section for each past deadline. 
+●	The grades must be determined by the points according to the grading rubric. 
+●	The student must be able to access the grading rubric. 
 
 <b> Solve Questions </b>
 The student can solve questions according to certain specifications (Topic, Difficulty level). 
@@ -24,7 +29,7 @@ The student can select the Level of Difficult (Easy, Medium or Hard), he/she wou
 The student may buy a hint to solve a question using points, according to a points per hints scheme.
 
 <b> View Leaderboard </b>
-The student can view all students enrolled in each Math topic category (Algebra, Trigonometry or Geometry), in descending order based on their points’ Score.
+The student can view all students enrolled in each Math topic category (Algebra, Trigonometry or Geometry), in descending order based on their points’ Score. The leaderboard must be dynamically updated as students progress through the game - by solving questions or buying hints. 
 
 <b> Challenge Friend </b>
 The student can challenge another friend in a specific Math topic category (Algebra, Trigonometry or Geometry) at a selected Level of Difficulty. 
@@ -43,7 +48,95 @@ The teachers can view the same leaderboard that is available to the students.
 
 ### COMMON FUNCTIONALITIES 
 <b> Authentication </b> 
-The Student or Teacher can login to the Pizza Rush Application by entering his/her Username and Password.
+The Student or Teacher can login to the Pizza Rush Application by entering his/her Username and Password. The user domain(student/teacher) shall be automatically determined upon login, and does not need to be mentioned. 
+
+## Grading System 
+●	The student shall be graded based on the active involvement in playing the game - which will be quantitatively measured by the points accumulated, individually for each section. 
+●	There shall be a grading deadline set for each math topic. 
+●	The points accumulated in that section  by that deadline shall determine the grade based on the grading rubric available to the student. 
+●	The points accumulated shall be reset to 0 once the deadline has elapsed, and the grade has been decided. 
+●	The deadline shall be renewed regularly at the teacher’s discretion. 
+
+## Solving Questions
+●	The student must be able to select the math topic and difficulty level for which he/she wants to solve questions for. 
+●	The difficulty levels must only be accessed sequentially, and are locked from access until a certain point threshold for that section is reached.
+●	The user must see a story context for the question before the question is displayed. 
+●	There is a story context for each individual question.
+●	The story context shall consist of a game world and character, which is randomly assigned to a user, and changes with every question. 
+●	The user must then be directed to the question screen, which consists of a multiple choice question, 4 answers and a hint option.
+
+<table style="width:100%">
+  <tr>
+    <th>Difficulty Level</th>
+    <th>Points Awarded per Correct Answer</th>
+    <th>Points Deducted for using Hint</th>
+    <th>Points Deducted for Incorrect Answer</th>
+  </tr>
+  <tr>
+    <td>Easy</td>
+    <td>+10</td>
+    <td>-30</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Medium</td>
+    <td>+20</td>
+    <td>-60</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Difficult</td>
+    <td>+30</td>
+    <td>-90</td>
+    <td>0</td>
+  </tr>
+</table>
+
+## Challenging Friends
+Sending challenge
+●	The student must be able to challenge another user in a specific math section and at a specific difficulty level of his/her choice. 
+●	The challenge must consist of five questions. 
+●	The five questions must be answered without any hints and with a running timer. 
+●	The student must be able to view his/her score and time for the challenge once the challenge is completed. 
+●	The student must be able to send the same challenge (same set of five questions) to another user by selecting the user from a drop down menu. 
+
+Accepting challenge 
+●	The student must be able to see the challenges received from other users. 
+●	The student must be able to choose to accept or decline received challenges. 
+●	The student must be presented with the same five questions to solve as those solved by his/her challenger. 
+●	The student must be presented with his/her score and time for the accepted challenge.
+●	The student’s score must automatically be shared with the challenger. 
+●	The student must also be presented with a win/lose message based on the points/time ratio of his/her performance as compared to that of the challenger’s. 
+●	The student must be able to further challenge another user if he/she wishes to do so. 
+
+View sent challenges
+●	The student must be able to view all previously sent challenges. 
+●	The student must be able to view whether or not the challenges have been accepted. 
+●	If the challenge has been accepted, the student must be able to see the challenged user’s score and a win/lose message based on the point/time ratio. 
+
+## COURSE PERFORMANCE SUMMARY 
+●	The teacher must be able to view the summary statistics for each in the specific Math topic.
+●	The course summary statistics shall include:
+●	A line chart with the Progression of the Average Score of the class over time for each individual section (Y axis: average points of class, x axis: time) 
+●	Mean, Median and Standard Deviation of class scores on each past assignment, with the corresponding assignment date
+
+## ADD QUESTION
+●	The teacher must be able to upload questions for the students to solve according to a pre-designed questionnaire template.
+●	The questionnaire template shall include the following components:
+○	Select math topic - Drop down menu
+○	Select difficulty level - Drop down menu
+○	Select game world - Drop down menu
+○	Select Characters- Drop down menu
+○	Write context story - Text box 
+○	Write questions - Text box (Option available to add media attachment) 
+●	The teacher must be able to upload the drafted question, and must be prompted to confirm before doing so. 
+
+## Usability Requirements 
+The system must:
+●	Reduce short term memory load: The implementation of navigation bar helps users navigate seamlessly through the features.
+●	Permit easy reversal of actions: The user can return to their previous state through the use of a back button.
+●	Internal Locus of Control: Defined buttons and titles for each feature of the system help make navigation and task activation clear for users.
+●	Strive for consistency: A consistent layout of the features is achieved using similar font, color and search buttons. 
 
 ## Documentation 
 
