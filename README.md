@@ -2,37 +2,51 @@
 
 Pizza Rush is a mobile (iOS & Android compatible) based application that aims to allow students and teachers to be able to socialize teaching and learning of courses through an enjoyable game.
 
-It provides a platform that allows players to learn and compete with one another through challenging educational content. Teachers will also be able to assess mastery of the course via data analysis and automated grading obtained through the player’s history of accomplishment in the game, in a comprehensive and continuous way.The objective of the game is to help students understand mathematical concepts starting from the basics such as addition, multiplication and division before moving to more advanced concepts like calculus, geometry and percentages.
+It provides a platform that allows students to learn and compete with one another through challenging educational content. Teachers will also be able to assess mastery of the course via data analysis and automated grading obtained through the player’s history of accomplishment in the game, in a comprehensive and continuous way.
 
-## Features
+## Features Overview
 Pizza Rush is designed as a dual user application, with its targeted users being students and teachers. It provides different functionalities to each of its users accordingly, as has been elaborated below. 
 
 ### STUDENTS
-<b> View Player History </b>
-The student can view: Graph of the progression of points in individual Math Topics, Total Current Points, Grading Deadline, Past grades, Grading Rubric
-●	The student must be able to view current point accumulation and next upcoming grading deadline for each math topic. 
-●	The student must be able to view past performance in each math section in the form of a line chart (Y axis: points, X axis: Time)
-●	The student must also be able to see past grades for each section for each past deadline. 
-●	The grades must be determined by the points according to the grading rubric. 
-●	The student must be able to access the grading rubric. 
-
-<b> Solve Questions </b>
-The student can solve questions according to certain specifications (Topic, Difficulty level). 
+<b> View Player History </b> 
+* The student can view their past performance in each math section in the form of a line chart (Y axis: points, X axis: Time).
+* The student can view current point accumulation and upcoming grading deadlines for each math topic.
+* The student can view their past grades for each section for each past deadline. 
+* The student can access the grading rubric, using which the points to grades conversion is determined. 
 
 <b> Select Math Topic </b>
-The student can select the specific Math Topic he/she would like to Solve Questions from, out of the 3 topics we currently have available in our Application (Algebra, Trigonometry and Geometry).
+The student can select the any math section they would like to solve questions from. Currently PizzaRush supports 3 topics (Algebra, Trigonometry and Geometry).
 
 <b> Select Level of Difficulty </b>
-The student can select the Level of Difficult (Easy, Medium or Hard), he/she would like the questions to be. The levels can only be unlocked when played in order: Easy -> Medium -> Hard. 
+The student can solve questions of varying difficulty levels (Easy, Medium, Hard) within any chosen math section. The following levels can only be unlocked when played in order: Easy -> Medium -> Hard. 
 
 <b> Buy Hints </b>
-The student may buy a hint to solve a question using points, according to a points per hints scheme.
+While playing the game a student may buy a hint using points, to help solve a particular question. The number of points required to buy a hint is variable, and depends on the points per hints scheme as below. 
+
+<table style="width:100%">
+  <tr>
+    <th>Difficulty Level</th>
+    <th>Points Deducted per Hint</th>
+  </tr>
+  <tr>
+    <td>Easy</td>
+    <td>-30</td>
+  </tr>
+  <tr>
+    <td>Medium</td>
+    <td>-60</td>
+  </tr>
+  <tr>
+    <td>Hard</td>
+    <td>-90</td>
+  </tr>
+</table>
 
 <b> View Leaderboard </b>
-The student can view all students enrolled in each Math topic category (Algebra, Trigonometry or Geometry), in descending order based on their points’ Score. The leaderboard must be dynamically updated as students progress through the game - by solving questions or buying hints. 
+The student can view all students enrolled in each Math topic category (Algebra, Trigonometry or Geometry), in descending order based on their points’ scores. The leaderboard is dynamically updated as students progress through the game - by solving questions or buying hints. 
 
 <b> Challenge Friend </b>
-The student can challenge another friend in a specific Math topic category (Algebra, Trigonometry or Geometry) at a selected Level of Difficulty. 
+The student can challenge another friend in a specific Math topic category (Algebra, Trigonometry or Geometry) at a selected level of difficulty (Easy, Medium, Hard). 
 
 ### TEACHERS
 <b> Add Questions </b>
@@ -51,20 +65,21 @@ The teachers can view the same leaderboard that is available to the students.
 The Student or Teacher can login to the Pizza Rush Application by entering his/her Username and Password. The user domain(student/teacher) shall be automatically determined upon login, and does not need to be mentioned. 
 
 ## Grading System 
-●	The student shall be graded based on the active involvement in playing the game - which will be quantitatively measured by the points accumulated, individually for each section. 
-●	There shall be a grading deadline set for each math topic. 
-●	The points accumulated in that section  by that deadline shall determine the grade based on the grading rubric available to the student. 
-●	The points accumulated shall be reset to 0 once the deadline has elapsed, and the grade has been decided. 
-●	The deadline shall be renewed regularly at the teacher’s discretion. 
+* The student shall be graded based on the active involvement in playing the game - which will be quantitatively measured by the points accumulated, individually for each section. 
+* There shall be a grading deadline set for each math topic, which is entitely upto the discretion of the teacher. 
+* The points accumulated in that math section by that deadline shall determine the grade based on the grading rubric available to the student. 
+* The points accumulated in that math section shall be reset to 0 once the deadline has elapsed, and the grade has been decided. After which, a new deadline may be introduced. 
+* The deadline shall be renewed regularly at the teacher’s discretion. 
 
 ## Solving Questions
-●	The student must be able to select the math topic and difficulty level for which he/she wants to solve questions for. 
-●	The difficulty levels must only be accessed sequentially, and are locked from access until a certain point threshold for that section is reached.
-●	The user must see a story context for the question before the question is displayed. 
-●	There is a story context for each individual question.
-●	The story context shall consist of a game world and character, which is randomly assigned to a user, and changes with every question. 
-●	The user must then be directed to the question screen, which consists of a multiple choice question, 4 answers and a hint option.
+* The student is able to select the math topic and difficulty level for which they wants to solve questions for. 
+* The difficulty levels must only be accessed sequentially, and are locked from access until a certain point threshold for that section is reached.
+* The student will see a story context for the question before the question is displayed, which will introduce the game aspect. 
+* There is a story context for each individual question.
+* The story context shall consist of a game world and character, which is randomly assigned to a user, and changes with every question. 
+* The user must then be directed to the question screen, which consists of a question, 4 answers and a hint option. The question shall build on the sotry context and may be MCQ, interactive numerical or interactival area based. 
 
+The points earned per questions answered by the user shall be determined by the points ruberic below: 
 <table style="width:100%">
   <tr>
     <th>Difficulty Level</th>
@@ -151,6 +166,7 @@ The system must:
 
 For more reference and deeper understanding of the project process, feel free to check out the following documentation: 
 * [Candidate Architecture diagram](https://github.com/anushadatta/PizzaRush/blob/master/documentation/Candidate%20Architecture%20Diagram.pdf)
+* [Design Document](documentation/Design%20Document.pdf)
 * [Subsystems Interface diagram](https://github.com/anushadatta/PizzaRush/blob/master/documentation/Subsystems%20Interface.pdf)
 * [Test cases and Test Summary](https://github.com/anushadatta/PizzaRush/blob/master/documentation/Test%20Cases%20and%20Test%20Summary.pdf) (Black box testing)
 
