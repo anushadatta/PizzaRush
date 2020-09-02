@@ -1,8 +1,8 @@
 # PizzaRush
 
-Pizza Rush is a mobile (iOS & Android compatible) based application that aims to allow students and teachers to be able to socialize teaching and learning of courses through an enjoyable game.
+Pizza Rush is a native mobile (iOS & Android) application that aims to allow students and teachers to be able to socialize teaching and learning of courses through an enjoyable game.
 
-It provides a platform that allows students to learn and compete with one another through challenging educational content. Teachers will also be able to assess mastery of the course via data analysis and automated grading obtained through the player’s history of accomplishment in the game, in a comprehensive and continuous way.
+It provides a platform that allows students to learn and compete with one another through challenging educational content. Teachers will also be able to assess mastery of the course via data analytics and automated grading obtained through the player’s history of accomplishments in the game, in a comprehensive and continuous way.
 
 ## Features Overview
 <p align="center"><img src="assets/Banner.png" width="200"> </p>
@@ -109,32 +109,26 @@ The points earned per questions answered by the user shall be determined by the 
 </table>
 
 ## Challenging Friends
-Sending challenge
-●	The student must be able to challenge another user in a specific math section and at a specific difficulty level of his/her choice. 
-●	The challenge must consist of five questions. 
-●	The five questions must be answered without any hints and with a running timer. 
-●	The student must be able to view his/her score and time for the challenge once the challenge is completed. 
-●	The student must be able to send the same challenge (same set of five questions) to another user by selecting the user from a drop down menu. 
+<b>Sending challenge</b>
+* The student can challenge another user in a specific math section and at a specific difficulty level of their choice. 
+* A custom challenge is created for the player to attempt. 
+* The challenge questions must be answered with a running timer, and without any hints. 
+* The student can view their score and time for the challenge once the challenge is completed. 
+* The student can then choose to send the same challenge(identical set of challenge questions) to another player by selecting the user from a drop down menu. 
 
-Accepting challenge 
-●	The student must be able to see the challenges received from other users. 
-●	The student must be able to choose to accept or decline received challenges. 
-●	The student must be presented with the same five questions to solve as those solved by his/her challenger. 
-●	The student must be presented with his/her score and time for the accepted challenge.
-●	The student’s score must automatically be shared with the challenger. 
-●	The student must also be presented with a win/lose message based on the points/time ratio of his/her performance as compared to that of the challenger’s. 
-●	The student must be able to further challenge another user if he/she wishes to do so. 
+<b>Accepting challenge</b> 
+* The student can view the challenges received from other players. 
+* The student can choose to accept or decline received challenges. 
+* If a challenge is accepted, the student is presented with the same challenge questions to solve as those solved by his/her challenger. 
+* At challenge completion, the student is presented with his/her score and time for the accepted challenge, and the challenge outcome - WIN/LOSS.
+* The WIN/LOSS outcome is determined by a points/time ratio of his/her performance as compared to that of the challenger’s. 
+* The challengee’s score and outcome of the challenge automatically be shared with the challenger. 
+* The student can further challenge another player if he/she wishes to do so. 
 
-View sent challenges
-●	The student must be able to view all previously sent challenges. 
-●	The student must be able to view whether or not the challenges have been accepted. 
-●	If the challenge has been accepted, the student must be able to see the challenged user’s score and a win/lose message based on the point/time ratio. 
-
-## COURSE PERFORMANCE SUMMARY 
-●	The teacher must be able to view the summary statistics for each in the specific Math topic.
-●	The course summary statistics shall include:
-●	A line chart with the Progression of the Average Score of the class over time for each individual section (Y axis: average points of class, x axis: time) 
-●	Mean, Median and Standard Deviation of class scores on each past assignment, with the corresponding assignment date
+<b>View sent challenges</b>
+* The student can view all previously sent challenges. 
+* The student can view whether the challenges have been accepted or declined. 
+* If the challenge has been accepted, the student can able to see the challenged user’s score and WIN/LOSS outcome of the challenge.
 
 ## ADD QUESTION
 The teacher can upload questions for the students to solve according to a pre-designed questionnaire template. The questionnaire template consists of the following components:
@@ -146,11 +140,11 @@ The teacher can upload questions for the students to solve according to a pre-de
 * Write questions (Option available to add media attachment)  
 
 ## Usability Requirements 
-Key considerations to enhance usability of the application are:
-* Reduce short term memory load: The implementation of navigation bar helps users navigate seamlessly through the features.
-* Permit easy reversal of actions: The user can return to their previous state through the use of a back button.
-* Internal Locus of Control: Defined buttons and titles for each feature of the system help make navigation and task activation clear for users.
-* Strive for consistency: A consistent layout of the features is achieved using similar font, color and search buttons. 
+Based on Shneiderman's Eight Golden Rules of Interface Design, the key considerations to enhance usability of the application are:
+* <b>Reduce short term memory load:</b> The implementation of navigation bar helps users navigate seamlessly through the features.
+* <b>Permit easy reversal of actions:</b> The user can return to their previous state through the use of a back button.
+* <b>Internal Locus of Control:</b> Defined buttons and titles for each feature of the system help make navigation and task activation clear for users.
+* <b>Strive for consistency:</b> A consistent layout of the features is achieved using similar font, color and search buttons. 
 
 ## Documentation 
 
